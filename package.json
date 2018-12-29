@@ -36,6 +36,7 @@
     "webpack-dev-server": "^3.1.14"
   },
   "devDependencies": {
+    "@types/node": "^10.12.18",
     "@types/node-sass": "^3.10.32",
     "@types/webpack": "^4.4.22",
     "ts-node": "^7.0.1",

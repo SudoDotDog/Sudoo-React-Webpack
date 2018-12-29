@@ -4,10 +4,11 @@
  * @description Optimization
  */
 
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
+import OptimizeCSSAssetsPlugin from "optimize-css-assets-webpack-plugin";
+import TerserPlugin from "terser-webpack-plugin";
 
-module.exports = {
+export const createOptimization = () => ({
+
     minimizer: [
         new TerserPlugin({
             cache: true,
@@ -25,4 +26,4 @@ module.exports = {
             },
         },
     },
-}
+});

@@ -4,13 +4,13 @@
  * @description Development
  */
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require('path');
-const webpack = require('webpack');
+import * as HtmlWebpackPlugin from "html-webpack-plugin";
+import * as Path from "path";
+import * as Webpack from "webpack";
 
-const BUILD_DIR = path.resolve(__dirname, '..', 'dist');
-const APP_DIR = path.resolve(__dirname, '..', 'src');
-const RENDERER_TSCONFIG_DIR = path.resolve(__dirname, '..', 'typescript', 'tsconfig.dev.json');
+const BUILD_DIR = Path.resolve(__dirname, '..', 'dist');
+const APP_DIR = Path.resolve(__dirname, '..', 'src');
+const RENDERER_TSCONFIG_DIR = Path.resolve(__dirname, '..', 'typescript', 'tsconfig.dev.json');
 
 const config = {
     devtool: 'cheap-module-eval-source-map',
@@ -44,25 +44,25 @@ const config = {
         ]
     },
     plugins: [
-        new webpack.WatchIgnorePlugin([/css\.d\.ts$/]),
+        new Webpack.WatchIgnorePlugin([/css\.d\.ts$/]),
         new HtmlWebpackPlugin({
             chunks: ['index'],
             title: 'Brontosaurus',
             template: require('./common/dirs').HTML_TEMPLATE_DIR,
             filename: 'index.html',
         }),
-        new webpack.DefinePlugin({
+        new Webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('development'),
         }),
-        new webpack.LoaderOptionsPlugin({
+        new Webpack.LoaderOptionsPlugin({
             debug: true
         }),
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NamedModulesPlugin(),
+        new Webpack.HotModuleReplacementPlugin(),
+        new Webpack.NamedModulesPlugin(),
     ],
     devServer: {
         hot: true,
-        contentBase: path.resolve(__dirname, 'app', 'renderer'),
+        contentBase: Path.resolve(__dirname, 'app', 'renderer'),
         publicPath: '/',
         port: 8083,
         inline: true,

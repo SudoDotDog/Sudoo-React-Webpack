@@ -4,15 +4,13 @@
  * @description Typescript Loader
  */
 
-module.exports = (tsconfig) => {
+export const createTypescriptLoader = (TSCONFIG_DIR: string) => ({
 
-    return {
-        test: /\.tsx?$/,
-        use: [{
-            loader: 'awesome-typescript-loader',
-            options: {
-                configFileName: tsconfig,
-            },
-        }],
-    };
-}
+    test: /\.tsx?$/,
+    use: [{
+        loader: 'awesome-typescript-loader',
+        options: {
+            configFileName: TSCONFIG_DIR,
+        },
+    }],
+});

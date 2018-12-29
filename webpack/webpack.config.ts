@@ -4,36 +4,34 @@
  * @description Production
  */
 
-import * as HtmlWebpackPlugin from 
+import * as HtmlWebpackPlugin from "html-webpack-plugin";
+import * as MiniCssExtractPlugin from "mini-css-extract-plugin";
+import * as Webpack from "webpack";
+import { createOptimization } from "./common/optimization";
+import { createDevelopmentSassLoader } from "./common/sass.dev";
+import { createTypescriptLoader } from "./common/ts";
+import { SudooWebpackPath } from "./declare";
+import * as Path from "path";
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const path = require('path');
-const webpack = require('webpack');
-
-const BUILD_DIR = path.resolve(__dirname, '..', 'dist');
-const APP_DIR = path.resolve(__dirname, '..', 'src');
-const RENDERER_TSCONFIG_DIR = path.resolve(__dirname, '..', 'typescript', 'tsconfig.dev.json');
-
-const config = {
+export const createBuildConfig = (PATHS: SudooWebpackPath) => ({
     devtool: 'cheap-source-map',
     target: 'web',
     mode: 'production',
-    optimization: require('./common/optimization'),
+    optimization: createOptimization(),
     entry: {
-        index: APP_DIR + "/index.tsx",
+        index: Path.join(PATHS.APP_DIR, PATHS.APP_ENTRY_FILE_NAME),
     },
     output: {
         filename: "[name].bundle.js",
-        path: BUILD_DIR,
+        path: PATHS.BUILD_DIR,
     },
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".json", ".css", ".sass"],
     },
     module: {
         rules: [
-            require('./common/ts')(RENDERER_TSCONFIG_DIR),
-            ...require('./common/sass.build'),
+            createTypescriptLoader(PATHS.TSCONFIG_PATH),
+            ...createDevelopmentSassLoader(PATHS.COMMON_SASS_DIR),
             {
                 enforce: "pre",
                 test: /\.js$/,
@@ -49,13 +47,11 @@ const config = {
         new HtmlWebpackPlugin({
             chunks: ['index'],
             title: 'Brontosaurus',
-            template: require('./common/dirs').HTML_TEMPLATE_DIR,
+            template: Path.join(PATHS.PUBLIC_DIR, PATHS.TEMPLATE_FILE_NAME),
             filename: 'index.html',
         }),
-        new webpack.DefinePlugin({
+        new Webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production'),
         }),
     ],
-};
-
-module.exports = config;
+});
