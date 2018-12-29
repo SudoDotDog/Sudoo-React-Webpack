@@ -11,9 +11,10 @@ import * as Webpack from "webpack";
 import { createOptimization } from "./common/optimization";
 import { createSassProductionLoader } from "./common/sass.build";
 import { createTypescriptLoader } from "./common/ts";
-import { SudooWebpackPath } from "./declare";
+import { SudooWebpackInternal, SudooWebpackPath, SudooWebpackSetting } from "./declare";
 
-export const createBuildConfig = (PATHS: SudooWebpackPath) => ({
+export const createBuildConfig = (PATHS: SudooWebpackPath, setting: SudooWebpackSetting, internal: SudooWebpackInternal): Webpack.Configuration => ({
+
     target: 'web',
     mode: 'production',
     optimization: createOptimization(),
@@ -41,12 +42,12 @@ export const createBuildConfig = (PATHS: SudooWebpackPath) => ({
     plugins: [
         new MiniCssExtractPlugin({
             filename: "[name].css",
-            chunkFilename: "[id].css"
+            chunkFilename: "[id].css",
         }),
         new HtmlWebpackPlugin({
             chunks: ['index'],
-            title: 'Brontosaurus',
-            template: Path.join(PATHS.PUBLIC_DIR, PATHS.TEMPLATE_FILE_NAME),
+            title: setting.title,
+            template: internal.TEMPLATE_PATH,
             filename: 'index.html',
         }),
         new Webpack.DefinePlugin({

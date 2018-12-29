@@ -9,9 +9,10 @@ import * as Path from "path";
 import * as Webpack from "webpack";
 import { createSassDevelopmentLoader } from "./common/sass.dev";
 import { createTypescriptLoader } from "./common/ts";
-import { SudooWebpackPath } from "./declare";
+import { SudooWebpackInternal, SudooWebpackPath, SudooWebpackSetting } from "./declare";
 
-export const createDevConfig = (PATHS: SudooWebpackPath) => ({
+export const createDevConfig = (PATHS: SudooWebpackPath, setting: SudooWebpackSetting, internal: SudooWebpackInternal): Webpack.Configuration => ({
+
     devtool: 'cheap-module-eval-source-map',
     target: "web",
     mode: "development",
@@ -40,31 +41,33 @@ export const createDevConfig = (PATHS: SudooWebpackPath) => ({
                 test: /\.js$/,
                 loader: "source-map-loader",
             },
-        ]
+        ],
     },
     plugins: [
         new Webpack.WatchIgnorePlugin([/css\.d\.ts$/]),
         new HtmlWebpackPlugin({
             chunks: ['index'],
-            title: 'Brontosaurus',
-            template: Path.join(PATHS.PUBLIC_DIR, PATHS.TEMPLATE_FILE_NAME),
+            title: setting.title,
+            template: internal.TEMPLATE_PATH,
             filename: 'index.html',
         }),
         new Webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('development'),
         }),
         new Webpack.LoaderOptionsPlugin({
-            debug: true
+            debug: true,
         }),
         new Webpack.HotModuleReplacementPlugin(),
         new Webpack.NamedModulesPlugin(),
     ],
-    devServer: {
-        hot: true,
-        contentBase: PATHS.BUILD_DIR,
-        publicPath: '/',
-        port: 8083,
-        inline: true,
-        historyApiFallback: true
-    },
+    ...({
+        devServer: {
+            hot: true,
+            contentBase: PATHS.BUILD_DIR,
+            publicPath: '/',
+            port: 8083,
+            inline: true,
+            historyApiFallback: true,
+        },
+    } as any),
 });

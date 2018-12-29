@@ -6,8 +6,9 @@
 
 import OptimizeCSSAssetsPlugin from "optimize-css-assets-webpack-plugin";
 import TerserPlugin from "terser-webpack-plugin";
+import * as Webpack from "webpack";
 
-export const createOptimization = () => ({
+export const createOptimization = (): Webpack.Options.Optimization => ({
 
     minimizer: [
         new TerserPlugin({

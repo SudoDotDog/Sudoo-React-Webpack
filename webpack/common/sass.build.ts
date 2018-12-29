@@ -20,7 +20,7 @@ export const createSassProductionLoader = (COMMON_SASS_DIR: string) => [
                 camelCase: true,
                 minimize: true,
                 sass: true,
-                localIdentName: "[name]_[local]__[hash:base64:5]"
+                localIdentName: "[name]_[local]__[hash:base64:5]",
             },
         }, {
             loader: 'sass-loader',
