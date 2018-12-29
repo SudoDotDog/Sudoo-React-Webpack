@@ -1,0 +1,23 @@
+{
+  "name": "@sudoo/webpack-react",
+  "version": "1.0.0",
+  "description": ":saxophone: Webpack common modules for react",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SudoDotDog/Sudoo-React-Webpack.git"
+  },
+  "keywords": [
+    "webpack",
+    "sudoo"
+  ],
+  "author": "WMXPY",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SudoDotDog/Sudoo-React-Webpack/issues"
+  },
+  "homepage": "https://github.com/SudoDotDog/Sudoo-React-Webpack#readme"
+}
