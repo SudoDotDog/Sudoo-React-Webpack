@@ -7,12 +7,11 @@
 import * as HtmlWebpackPlugin from "html-webpack-plugin";
 import * as Path from "path";
 import * as Webpack from "webpack";
+import { createSassDevelopmentLoader } from "./common/sass.dev";
+import { createTypescriptLoader } from "./common/ts";
+import { SudooWebpackPath } from "./declare";
 
-const BUILD_DIR = Path.resolve(__dirname, '..', 'dist');
-const APP_DIR = Path.resolve(__dirname, '..', 'src');
-const RENDERER_TSCONFIG_DIR = Path.resolve(__dirname, '..', 'typescript', 'tsconfig.dev.json');
-
-const config = {
+export const createDevConfig = (PATHS: SudooWebpackPath) => ({
     devtool: 'cheap-module-eval-source-map',
     target: "web",
     mode: "development",
@@ -21,12 +20,12 @@ const config = {
             'react-hot-loader/patch',
             'webpack-dev-server/client',
             'webpack/hot/only-dev-server',
-            APP_DIR + "/index.tsx",
+            Path.join(PATHS.APP_DIR, PATHS.APP_ENTRY_FILE_NAME),
         ],
     },
     output: {
         filename: "[name].bundle.js",
-        path: BUILD_DIR,
+        path: PATHS.BUILD_DIR,
         publicPath: '/',
     },
     resolve: {
@@ -34,8 +33,8 @@ const config = {
     },
     module: {
         rules: [
-            require('./common/ts')(RENDERER_TSCONFIG_DIR),
-            ...require('./common/sass.dev'),
+            createTypescriptLoader(PATHS.TSCONFIG_PATH),
+            ...createSassDevelopmentLoader(PATHS.COMMON_SASS_DIR),
             {
                 enforce: "pre",
                 test: /\.js$/,
@@ -48,7 +47,7 @@ const config = {
         new HtmlWebpackPlugin({
             chunks: ['index'],
             title: 'Brontosaurus',
-            template: require('./common/dirs').HTML_TEMPLATE_DIR,
+            template: Path.join(PATHS.PUBLIC_DIR, PATHS.TEMPLATE_FILE_NAME),
             filename: 'index.html',
         }),
         new Webpack.DefinePlugin({
@@ -62,12 +61,10 @@ const config = {
     ],
     devServer: {
         hot: true,
-        contentBase: Path.resolve(__dirname, 'app', 'renderer'),
+        contentBase: PATHS.BUILD_DIR,
         publicPath: '/',
         port: 8083,
         inline: true,
         historyApiFallback: true
     },
-};
-
-module.exports = config;
+});

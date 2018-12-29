@@ -9,12 +9,11 @@ import * as MiniCssExtractPlugin from "mini-css-extract-plugin";
 import * as Path from "path";
 import * as Webpack from "webpack";
 import { createOptimization } from "./common/optimization";
-import { createDevelopmentSassLoader } from "./common/sass.dev";
+import { createSassProductionLoader } from "./common/sass.build";
 import { createTypescriptLoader } from "./common/ts";
 import { SudooWebpackPath } from "./declare";
 
 export const createBuildConfig = (PATHS: SudooWebpackPath) => ({
-    devtool: 'cheap-source-map',
     target: 'web',
     mode: 'production',
     optimization: createOptimization(),
@@ -22,7 +21,7 @@ export const createBuildConfig = (PATHS: SudooWebpackPath) => ({
         index: Path.join(PATHS.APP_DIR, PATHS.APP_ENTRY_FILE_NAME),
     },
     output: {
-        filename: "[name].bundle.js",
+        filename: "[name].[hash:base64:5].bundle.js",
         path: PATHS.BUILD_DIR,
     },
     resolve: {
@@ -31,7 +30,7 @@ export const createBuildConfig = (PATHS: SudooWebpackPath) => ({
     module: {
         rules: [
             createTypescriptLoader(PATHS.TSCONFIG_PATH),
-            ...createDevelopmentSassLoader(PATHS.COMMON_SASS_DIR),
+            ...createSassProductionLoader(PATHS.COMMON_SASS_DIR),
             {
                 enforce: "pre",
                 test: /\.js$/,

@@ -4,7 +4,7 @@
  * @description Sass Loader Development
  */
 
-export const createDevelopmentSassLoader = (COMMON_SASS_DIR: string) => [
+export const createSassDevelopmentLoader = (COMMON_SASS_DIR: string) => [
     {
         test: /\.sass$/,
         exclude: COMMON_SASS_DIR,
