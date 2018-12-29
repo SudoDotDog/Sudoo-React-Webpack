@@ -4,8 +4,8 @@
  * @description Optimization
  */
 
-import OptimizeCSSAssetsPlugin from "optimize-css-assets-webpack-plugin";
-import TerserPlugin from "terser-webpack-plugin";
+import * as OptimizeCSSAssetsPlugin from "optimize-css-assets-webpack-plugin";
+import * as TerserPlugin from "terser-webpack-plugin";
 import * as Webpack from "webpack";
 
 export const createOptimization = (): Webpack.Options.Optimization => ({
