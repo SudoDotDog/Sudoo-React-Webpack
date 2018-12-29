@@ -27,6 +27,6 @@
         "test"
     ],
     "include": [
-        "../src/**/*"
+        "../webpack/**/*"
     ]
 }
