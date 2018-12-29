@@ -6,12 +6,12 @@
 
 import * as HtmlWebpackPlugin from "html-webpack-plugin";
 import * as MiniCssExtractPlugin from "mini-css-extract-plugin";
+import * as Path from "path";
 import * as Webpack from "webpack";
 import { createOptimization } from "./common/optimization";
 import { createDevelopmentSassLoader } from "./common/sass.dev";
 import { createTypescriptLoader } from "./common/ts";
 import { SudooWebpackPath } from "./declare";
-import * as Path from "path";
 
 export const createBuildConfig = (PATHS: SudooWebpackPath) => ({
     devtool: 'cheap-source-map',
