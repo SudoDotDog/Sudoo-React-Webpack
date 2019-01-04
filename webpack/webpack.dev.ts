@@ -11,7 +11,7 @@ import { createSassDevelopmentLoader } from "./common/sass.dev";
 import { createTypescriptLoader } from "./common/ts";
 import { SudooWebpackInternal, SudooWebpackPath, SudooWebpackSetting } from "./declare";
 
-export const createDevConfig = (PATHS: SudooWebpackPath, setting: SudooWebpackSetting, internal: SudooWebpackInternal): Webpack.Configuration => ({
+export const createDevConfig = (PATHS: SudooWebpackPath, setting: SudooWebpackSetting, internal: SudooWebpackInternal, port: number): Webpack.Configuration => ({
 
     devtool: 'cheap-module-eval-source-map',
     target: "web",
@@ -65,7 +65,7 @@ export const createDevConfig = (PATHS: SudooWebpackPath, setting: SudooWebpackSe
             hot: true,
             contentBase: PATHS.BUILD_DIR,
             publicPath: '/',
-            port: 8083,
+            port,
             inline: true,
             historyApiFallback: true,
         },

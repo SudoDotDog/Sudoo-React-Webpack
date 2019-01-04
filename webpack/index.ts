@@ -38,8 +38,8 @@ export class SudooWebpack {
         return createBuildConfig(this._path, this._setting, this._internal);
     }
 
-    public development(): Webpack.Configuration {
+    public development(port: number): Webpack.Configuration {
 
-        return createDevConfig(this._path, this._setting, this._internal);
+        return createDevConfig(this._path, this._setting, this._internal, port);
     }
 }
