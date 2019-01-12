@@ -3,21 +3,19 @@ build := typescript/tsconfig.build.json
 dev := typescript/tsconfig.dev.json
 
 # NPX functions
-ifeq ($(OS), Windows_NT)
-	tsc := .\node_modules\.bin\tsc
-else
-	tsc := node_modules/.bin/tsc
-endif
+tsc := node_modules/.bin/tsc
 
 main: dev
 
+.IGNORE: clean
+
 dev:
 	@echo "[INFO] Building for development"
-	@$(tsc) --p $(dev)
+	@NODE_ENV=development $(tsc) --p $(dev)
 
 build:
 	@echo "[INFO] Building for production"
-	@$(tsc) --p $(build)
+	@NODE_ENV=production $(tsc) --p $(build)
 
 install:
 	@echo "[INFO] Installing dev Dependencies"
@@ -28,13 +26,9 @@ install-prod:
 	@yarn install --production=true
 
 clean:
-ifeq ($(OS), Windows_NT)
-	@echo "[INFO] Skipping"
-else
 	@echo "[INFO] Cleaning dist files"
 	@rm -rf dist
-endif
 
-publish: install build
+publish: install clean build
 	@echo "[INFO] Publishing package"
 	@npm publish --access=public

@@ -6,7 +6,7 @@
 
 export const createSassDevelopmentLoader = (COMMON_SASS_DIR: string) => [
     {
-        test: /\.sass$/,
+        test: /\.s(a|c)ss$/,
         exclude: COMMON_SASS_DIR,
         use: [{
             loader: 'style-loader',
@@ -28,7 +28,7 @@ export const createSassDevelopmentLoader = (COMMON_SASS_DIR: string) => [
         }],
     }, {
 
-        test: /\.sass$/,
+        test: /\.s(a|c)ss$/,
         include: COMMON_SASS_DIR,
         use: [{
             loader: 'style-loader',
