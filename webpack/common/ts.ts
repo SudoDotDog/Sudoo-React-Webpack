@@ -14,3 +14,10 @@ export const createTypescriptLoader = (TSCONFIG_DIR: string) => ({
         },
     }],
 });
+
+
+export const getResolves = () => ({
+    resolve: {
+        extensions: [".ts", ".tsx", ".js", ".json", ".css", ".sass"],
+    },
+});

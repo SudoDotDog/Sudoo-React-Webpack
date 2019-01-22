@@ -10,7 +10,7 @@ import * as Path from "path";
 import * as Webpack from "webpack";
 import { createOptimization } from "./common/optimization";
 import { createSassProductionLoader } from "./common/sass.build";
-import { createTypescriptLoader } from "./common/ts";
+import { createTypescriptLoader, getResolves } from "./common/ts";
 import { SudooWebpackInternal, SudooWebpackPath, SudooWebpackSetting } from "./declare";
 
 export const createBuildConfig = (PATHS: SudooWebpackPath, setting: SudooWebpackSetting, internal: SudooWebpackInternal): Webpack.Configuration => ({
@@ -25,9 +25,7 @@ export const createBuildConfig = (PATHS: SudooWebpackPath, setting: SudooWebpack
         filename: "[name].[chunkhash].bundle.js",
         path: PATHS.BUILD_DIR,
     },
-    resolve: {
-        extensions: [".ts", ".tsx", ".js", ".json", ".css", ".sass"],
-    },
+    ...getResolves(),
     module: {
         rules: [
             createTypescriptLoader(PATHS.TSCONFIG_PATH),

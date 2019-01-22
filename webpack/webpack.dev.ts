@@ -8,7 +8,7 @@ import * as HtmlWebpackPlugin from "html-webpack-plugin";
 import * as Path from "path";
 import * as Webpack from "webpack";
 import { createSassDevelopmentLoader } from "./common/sass.dev";
-import { createTypescriptLoader } from "./common/ts";
+import { createTypescriptLoader, getResolves } from "./common/ts";
 import { SudooWebpackInternal, SudooWebpackPath, SudooWebpackSetting } from "./declare";
 
 export const createDevConfig = (PATHS: SudooWebpackPath, setting: SudooWebpackSetting, internal: SudooWebpackInternal, port: number): Webpack.Configuration => ({
@@ -29,9 +29,7 @@ export const createDevConfig = (PATHS: SudooWebpackPath, setting: SudooWebpackSe
         path: PATHS.BUILD_DIR,
         publicPath: '/',
     },
-    resolve: {
-        extensions: [".ts", ".tsx", ".js", ".json", ".css", ".sass"],
-    },
+    ...getResolves(),
     module: {
         rules: [
             createTypescriptLoader(PATHS.TSCONFIG_PATH),

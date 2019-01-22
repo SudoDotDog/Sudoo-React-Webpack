@@ -8,7 +8,7 @@ import * as MiniCssExtractPlugin from "mini-css-extract-plugin";
 
 export const createSassProductionLoader = (COMMON_SASS_DIR: string) => [
     {
-        test: /\.sass$/,
+        test: /\.s(a|c)ss$/,
         exclude: COMMON_SASS_DIR,
         use: [{
             loader: MiniCssExtractPlugin.loader,
@@ -29,7 +29,7 @@ export const createSassProductionLoader = (COMMON_SASS_DIR: string) => [
             },
         }],
     }, {
-        test: /\.sass$/,
+        test: /\.s(a|c)ss$/,
         include: COMMON_SASS_DIR,
         use: [{
             loader: 'style-loader',
