@@ -38,7 +38,7 @@
   "devDependencies": {
     "@sudoo/triforce": "^1.2.0",
     "@types/node": "^10.12.18",
-    "@types/node-sass": "^3.10.32",
+    "@types/node-sass": "^4.11.0",
     "@types/webpack": "^4.4.24"
   },
   "peerDependencies": {
