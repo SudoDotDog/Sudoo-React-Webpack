@@ -60,6 +60,7 @@ export const createDevConfig = (PATHS: SudooWebpackPath, setting: SudooWebpackSe
             }),
             new Webpack.HotModuleReplacementPlugin(),
             new Webpack.NamedModulesPlugin(),
+            ...plugins,
         ],
         ...({
             devServer: {
@@ -71,6 +72,5 @@ export const createDevConfig = (PATHS: SudooWebpackPath, setting: SudooWebpackSe
                 historyApiFallback: true,
             },
         } as any),
-        ...plugins,
     };
 };
