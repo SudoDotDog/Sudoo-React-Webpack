@@ -4,6 +4,8 @@
  * @description Declare
  */
 
+import * as Webpack from "webpack";
+
 export type SudooWebpackPath = {
 
     APP_DIR: string;
@@ -18,6 +20,7 @@ export type SudooWebpackPath = {
 export type SudooWebpackSetting = {
 
     title: string;
+    plugins?: Webpack.Plugin[],
 };
 
 export type SudooWebpackInternal = {
