@@ -20,6 +20,7 @@ export type SudooWebpackPath = {
 export type SudooWebpackSetting = {
 
     title: string;
+    defines?: Record<string, string>;
     plugins?: Webpack.Plugin[],
 };
 

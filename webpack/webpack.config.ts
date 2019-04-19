@@ -8,6 +8,7 @@ import * as HtmlWebpackPlugin from "html-webpack-plugin";
 import * as MiniCssExtractPlugin from "mini-css-extract-plugin";
 import * as Path from "path";
 import * as Webpack from "webpack";
+import { createDefinePlugin } from "./common/define";
 import { createOptimization } from "./common/optimization";
 import { createSassProductionLoader } from "./common/sass.build";
 import { createTypescriptLoader, getResolves } from "./common/ts";
@@ -51,9 +52,7 @@ export const createBuildConfig = (PATHS: SudooWebpackPath, setting: SudooWebpack
                 template: internal.TEMPLATE_PATH,
                 filename: 'index.html',
             }),
-            new Webpack.DefinePlugin({
-                'process.env.NODE_ENV': JSON.stringify('production'),
-            }),
+            createDefinePlugin('production', setting.defines),
             ...plugins,
         ],
     };
