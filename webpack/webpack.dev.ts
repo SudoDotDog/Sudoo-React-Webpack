@@ -52,9 +52,7 @@ export const createDevConfig = (PATHS: SudooWebpackPath, setting: SudooWebpackSe
             }),
             new Webpack.HotModuleReplacementPlugin(),
             new Webpack.NamedModulesPlugin(),
-            createHtmlWebpackPlugin(internal.TEMPLATE_PATH, {
-                title: setting.title,
-            }),
+            createHtmlWebpackPlugin(internal.TEMPLATE_PATH, setting),
             createDefinePlugin('development', setting.defines),
             ...plugins,
         ],

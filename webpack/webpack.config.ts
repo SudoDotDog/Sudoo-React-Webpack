@@ -46,9 +46,7 @@ export const createBuildConfig = (PATHS: SudooWebpackPath, setting: SudooWebpack
                 filename: "[name].css",
                 chunkFilename: "[id].css",
             }),
-            createHtmlWebpackPlugin(internal.TEMPLATE_PATH, {
-                title: setting.title,
-            }),
+            createHtmlWebpackPlugin(internal.TEMPLATE_PATH, setting),
             createDefinePlugin('production', setting.defines),
             ...plugins,
         ],

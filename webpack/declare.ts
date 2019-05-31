@@ -20,6 +20,10 @@ export type SudooWebpackPath = {
 export type SudooWebpackSetting = {
 
     readonly title: string;
+
+    readonly mobile?: boolean;
+    readonly insertion?: string;
+
     readonly template?: string;
     readonly defines?: Record<string, string>;
     readonly plugins?: Webpack.Plugin[],
