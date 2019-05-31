@@ -8,23 +8,24 @@ import * as Webpack from "webpack";
 
 export type SudooWebpackPath = {
 
-    APP_DIR: string;
-    BUILD_DIR: string;
-    COMMON_SASS_DIR: string;
+    readonly APP_DIR: string;
+    readonly BUILD_DIR: string;
+    readonly COMMON_SASS_DIR: string;
 
-    TSCONFIG_PATH: string;
+    readonly TSCONFIG_PATH: string;
 
-    APP_ENTRY_FILE_NAME: string;
+    readonly APP_ENTRY_FILE_NAME: string;
 };
 
 export type SudooWebpackSetting = {
 
-    title: string;
-    defines?: Record<string, string>;
-    plugins?: Webpack.Plugin[],
+    readonly title: string;
+    readonly template?: string;
+    readonly defines?: Record<string, string>;
+    readonly plugins?: Webpack.Plugin[],
 };
 
 export type SudooWebpackInternal = {
 
-    TEMPLATE_PATH: string;
+    readonly TEMPLATE_PATH: string;
 };

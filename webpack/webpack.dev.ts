@@ -4,10 +4,10 @@
  * @description Development
  */
 
-import * as HtmlWebpackPlugin from "html-webpack-plugin";
 import * as Path from "path";
 import * as Webpack from "webpack";
 import { createDefinePlugin } from "./common/define";
+import { createHtmlWebpackPlugin } from "./common/html";
 import { createSassDevelopmentLoader } from "./common/sass.dev";
 import { createTypescriptLoader, getResolves } from "./common/ts";
 import { SudooWebpackInternal, SudooWebpackPath, SudooWebpackSetting } from "./declare";
@@ -47,17 +47,14 @@ export const createDevConfig = (PATHS: SudooWebpackPath, setting: SudooWebpackSe
         },
         plugins: [
             new Webpack.WatchIgnorePlugin([/css\.d\.ts$/]),
-            new HtmlWebpackPlugin({
-                chunks: ['index'],
-                title: setting.title,
-                template: internal.TEMPLATE_PATH,
-                filename: 'index.html',
-            }),
             new Webpack.LoaderOptionsPlugin({
                 debug: true,
             }),
             new Webpack.HotModuleReplacementPlugin(),
             new Webpack.NamedModulesPlugin(),
+            createHtmlWebpackPlugin(internal.TEMPLATE_PATH, {
+                title: setting.title,
+            }),
             createDefinePlugin('development', setting.defines),
             ...plugins,
         ],

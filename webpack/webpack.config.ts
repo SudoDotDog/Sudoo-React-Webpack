@@ -4,11 +4,11 @@
  * @description Production
  */
 
-import * as HtmlWebpackPlugin from "html-webpack-plugin";
 import * as MiniCssExtractPlugin from "mini-css-extract-plugin";
 import * as Path from "path";
 import * as Webpack from "webpack";
 import { createDefinePlugin } from "./common/define";
+import { createHtmlWebpackPlugin } from "./common/html";
 import { createOptimization } from "./common/optimization";
 import { createSassProductionLoader } from "./common/sass.build";
 import { createTypescriptLoader, getResolves } from "./common/ts";
@@ -46,11 +46,8 @@ export const createBuildConfig = (PATHS: SudooWebpackPath, setting: SudooWebpack
                 filename: "[name].css",
                 chunkFilename: "[id].css",
             }),
-            new HtmlWebpackPlugin({
-                chunks: ['index'],
+            createHtmlWebpackPlugin(internal.TEMPLATE_PATH, {
                 title: setting.title,
-                template: internal.TEMPLATE_PATH,
-                filename: 'index.html',
             }),
             createDefinePlugin('production', setting.defines),
             ...plugins,
