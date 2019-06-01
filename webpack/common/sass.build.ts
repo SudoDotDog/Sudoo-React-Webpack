@@ -41,5 +41,12 @@ export const createSassProductionLoader = (COMMON_SASS_DIR: string) => [
                 outputStyle: 'expanded',
             },
         }],
+    }, {
+        test: /\.css$/,
+        use: [{
+            loader: 'style-loader',
+        }, {
+            loader: 'css-loader',
+        }],
     },
 ];

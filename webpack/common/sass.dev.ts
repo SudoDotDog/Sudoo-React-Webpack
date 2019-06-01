@@ -41,5 +41,12 @@ export const createSassDevelopmentLoader = (COMMON_SASS_DIR: string) => [
                 sourceMap: true,
             },
         }],
+    }, {
+        test: /\.css$/,
+        use: [{
+            loader: 'style-loader',
+        }, {
+            loader: 'css-loader',
+        }],
     },
 ];
