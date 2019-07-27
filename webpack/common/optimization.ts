@@ -10,6 +10,7 @@ import * as Webpack from "webpack";
 
 export const createOptimization = (): Webpack.Options.Optimization => ({
 
+    runtimeChunk: 'multiple',
     minimizer: [
         new TerserPlugin({
             cache: true,
@@ -18,6 +19,7 @@ export const createOptimization = (): Webpack.Options.Optimization => ({
         new OptimizeCSSAssetsPlugin({}),
     ],
     splitChunks: {
+        chunks: 'all',
         cacheGroups: {
             styles: {
                 name: 'styles',
