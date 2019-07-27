@@ -31,7 +31,6 @@ export const createOptimization = (): Webpack.Options.Optimization => ({
             },
             vendor: {
                 test: /[\\/]node_modules[\\/]/,
-                priority: 10,
                 maxInitialRequests: 9,
                 name: (module) => {
                     const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
