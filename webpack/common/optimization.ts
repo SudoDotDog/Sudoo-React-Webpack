@@ -10,7 +10,7 @@ import * as Webpack from "webpack";
 
 export const createOptimization = (): Webpack.Options.Optimization => ({
 
-    runtimeChunk: 'multiple',
+    runtimeChunk: 'single',
     minimizer: [
         new TerserPlugin({
             cache: true,
@@ -21,10 +21,29 @@ export const createOptimization = (): Webpack.Options.Optimization => ({
     splitChunks: {
         chunks: 'all',
         cacheGroups: {
-            styles: {
-                name: 'styles',
+            core: {
+                test: /[\\/]src[\\/]/,
+                maxInitialRequests: 2,
+                priority: 10,
+                name: 'core',
+                enforce: true,
+                reuseExistingChunk: true,
+            },
+            vendor: {
+                test: /[\\/]node_modules[\\/]/,
+                priority: 10,
+                maxInitialRequests: 9,
+                name: (module) => {
+                    const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+                    return `vendor.${packageName.replace('@', '')}`;
+                },
+                reuseExistingChunk: true,
+            },
+            style: {
                 test: /\.css$/,
-                chunks: 'all',
+                priority: 10,
+                maxInitialRequests: 2,
+                name: 'style',
                 enforce: true,
             },
         },

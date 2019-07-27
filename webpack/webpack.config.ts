@@ -45,7 +45,7 @@ export const createBuildConfig = (PATHS: SudooWebpackPath, setting: SudooWebpack
         plugins: [
             new MiniCssExtractPlugin({
                 filename: "[name].[contenthash].css",
-                chunkFilename: "[id].[contenthash].css",
+                chunkFilename: "[name].[id].[contenthash].css",
             }),
             createHtmlWebpackPlugin(internal.TEMPLATE_PATH, setting),
             createDefinePlugin('production', setting.defines),
