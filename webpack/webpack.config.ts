@@ -26,7 +26,7 @@ export const createBuildConfig = (PATHS: SudooWebpackPath, setting: SudooWebpack
             index: Path.join(PATHS.APP_DIR, PATHS.APP_ENTRY_FILE_NAME),
         },
         output: {
-            filename: '[name].[chunkhash].bundle.js',
+            filename: '[name].[contenthash].bundle.js',
             path: PATHS.BUILD_DIR,
             publicPath: '/',
         },
