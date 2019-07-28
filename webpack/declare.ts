@@ -21,6 +21,8 @@ export type SudooWebpackSetting = {
 
     readonly title: string;
 
+    readonly favicon?: string;
+    readonly faviconType?: string;
     readonly mobile?: boolean;
     readonly insertion?: string;
 

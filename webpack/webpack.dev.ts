@@ -7,7 +7,7 @@
 import * as Path from "path";
 import * as Webpack from "webpack";
 import { createDefinePlugin } from "./common/define";
-import { createHtmlWebpackPlugin } from "./common/html";
+import { createDevlHtmlWebpackPlugin } from "./common/html-devl";
 import { createSassDevelopmentLoader } from "./common/sass.dev";
 import { createTypescriptLoader, getResolves } from "./common/ts";
 import { SudooWebpackInternal, SudooWebpackPath, SudooWebpackSetting } from "./declare";
@@ -52,7 +52,7 @@ export const createDevConfig = (PATHS: SudooWebpackPath, setting: SudooWebpackSe
             }),
             new Webpack.HotModuleReplacementPlugin(),
             new Webpack.NamedModulesPlugin(),
-            createHtmlWebpackPlugin(internal.TEMPLATE_PATH, setting),
+            createDevlHtmlWebpackPlugin(internal.TEMPLATE_PATH, setting),
             createDefinePlugin('development', setting.defines),
             ...plugins,
         ],

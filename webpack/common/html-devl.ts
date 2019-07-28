@@ -36,7 +36,7 @@ export const parseSettingForHtmlPlugin = (setting: SudooWebpackSetting): Record<
     };
 };
 
-export const createHtmlWebpackPlugin = (template: string, setting: SudooWebpackSetting) => {
+export const createDevlHtmlWebpackPlugin = (template: string, setting: SudooWebpackSetting) => {
 
     const parsed: Record<string, string> = parseSettingForHtmlPlugin(setting);
 
@@ -44,14 +44,7 @@ export const createHtmlWebpackPlugin = (template: string, setting: SudooWebpackS
         chunks: ['index'],
         template,
         filename: 'index.html',
-        minify: {
-            collapseWhitespace: true,
-            removeComments: false,
-            removeRedundantAttributes: true,
-            removeScriptTypeAttributes: true,
-            removeStyleLinkTypeAttributes: true,
-            useShortDoctype: true,
-        },
+        minify: false,
         ...parsed,
     });
 };
