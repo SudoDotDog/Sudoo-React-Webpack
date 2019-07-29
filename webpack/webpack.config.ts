@@ -7,6 +7,7 @@
 import * as MiniCssExtractPlugin from "mini-css-extract-plugin";
 import * as Path from "path";
 import * as Webpack from "webpack";
+import { createCopyPlugin } from "./common/copy";
 import { createDefinePlugin } from "./common/define";
 import { createHtmlWebpackPlugin } from "./common/html";
 import { createOptimization } from "./common/optimization";
@@ -47,6 +48,7 @@ export const createBuildConfig = (PATHS: SudooWebpackPath, setting: SudooWebpack
                 filename: "[name].[contenthash].css",
                 chunkFilename: "[name].[id].[contenthash].css",
             }),
+            createCopyPlugin(setting.copies),
             createHtmlWebpackPlugin(internal.TEMPLATE_PATH, setting),
             createDefinePlugin('production', setting.defines),
             ...plugins,

@@ -17,6 +17,14 @@ export type SudooWebpackPath = {
     readonly APP_ENTRY_FILE_NAME: string;
 };
 
+export type CopyPlugInElement = {
+
+    readonly from: string;
+    readonly to: string;
+    readonly test?: RegExp;
+    readonly cache?: boolean;
+};
+
 export type SudooWebpackSetting = {
 
     readonly title: string;
@@ -28,6 +36,7 @@ export type SudooWebpackSetting = {
 
     readonly template?: string;
     readonly defines?: Record<string, string>;
+    readonly copies?: CopyPlugInElement[];
     readonly plugins?: Webpack.Plugin[],
 };
 
