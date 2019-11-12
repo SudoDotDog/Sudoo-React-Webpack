@@ -10,18 +10,17 @@ import { createCopyPlugin } from "./common/copy";
 import { createDefinePlugin } from "./common/define";
 import { createDevlHtmlWebpackPlugin } from "./common/html-devl";
 import { createSassDevelopmentLoader } from "./common/sass.dev";
+import { getStatsSetting } from "./common/status";
 import { createTypescriptLoader, getResolves } from "./common/ts";
 import { SudooWebpackInternal, SudooWebpackPath, SudooWebpackSetting } from "./declare";
 
 export const createDevConfig = (PATHS: SudooWebpackPath, setting: SudooWebpackSetting, internal: SudooWebpackInternal, port: number): Webpack.Configuration => {
 
     const plugins: Webpack.Plugin[] = setting.plugins || [];
-    const stats: Webpack.Stats.ToStringOptions = setting.silent ? 'errors-only' : 'normal';
 
     return {
         devtool: 'cheap-module-eval-source-map',
         target: "web",
-        stats,
         mode: "development",
         entry: {
             index: [
@@ -36,6 +35,7 @@ export const createDevConfig = (PATHS: SudooWebpackPath, setting: SudooWebpackSe
             path: PATHS.BUILD_DIR,
             publicPath: '/',
         },
+        ...getStatsSetting(setting),
         ...getResolves(),
         module: {
             rules: [

@@ -13,17 +13,16 @@ import { createDefinePlugin } from "./common/define";
 import { createHtmlWebpackPlugin } from "./common/html";
 import { createOptimization } from "./common/optimization";
 import { createSassProductionLoader } from "./common/sass.build";
+import { getStatsSetting } from "./common/status";
 import { createTypescriptLoader, getResolves } from "./common/ts";
 import { SudooWebpackInternal, SudooWebpackPath, SudooWebpackSetting } from "./declare";
 
 export const createBuildConfig = (PATHS: SudooWebpackPath, setting: SudooWebpackSetting, internal: SudooWebpackInternal): Webpack.Configuration => {
 
     const plugins: Webpack.Plugin[] = setting.plugins || [];
-    const stats: Webpack.Stats.ToStringOptions = setting.silent ? 'errors-only' : 'normal';
 
     return {
         target: 'web',
-        stats,
         mode: 'production',
         optimization: createOptimization(),
         entry: {
@@ -34,6 +33,7 @@ export const createBuildConfig = (PATHS: SudooWebpackPath, setting: SudooWebpack
             path: PATHS.BUILD_DIR,
             publicPath: '/',
         },
+        ...getStatsSetting(setting),
         ...getResolves(),
         module: {
             rules: [
