@@ -16,10 +16,12 @@ import { SudooWebpackInternal, SudooWebpackPath, SudooWebpackSetting } from "./d
 export const createDevConfig = (PATHS: SudooWebpackPath, setting: SudooWebpackSetting, internal: SudooWebpackInternal, port: number): Webpack.Configuration => {
 
     const plugins: Webpack.Plugin[] = setting.plugins || [];
+    const stats: Webpack.Stats.ToStringOptions = setting.silent ? 'errors-only' : 'normal';
 
     return {
         devtool: 'cheap-module-eval-source-map',
         target: "web",
+        stats,
         mode: "development",
         entry: {
             index: [

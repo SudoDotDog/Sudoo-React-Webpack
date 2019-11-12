@@ -19,9 +19,11 @@ import { SudooWebpackInternal, SudooWebpackPath, SudooWebpackSetting } from "./d
 export const createBuildConfig = (PATHS: SudooWebpackPath, setting: SudooWebpackSetting, internal: SudooWebpackInternal): Webpack.Configuration => {
 
     const plugins: Webpack.Plugin[] = setting.plugins || [];
+    const stats: Webpack.Stats.ToStringOptions = setting.silent ? 'errors-only' : 'normal';
 
     return {
         target: 'web',
+        stats,
         mode: 'production',
         optimization: createOptimization(),
         entry: {
