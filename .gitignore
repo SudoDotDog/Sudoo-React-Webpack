@@ -21,6 +21,9 @@ coverage
 dist
 temp
 
+# lock
+yarn.lock
+
 # Mac OS
 .DS_Store
 
