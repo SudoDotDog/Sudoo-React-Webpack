@@ -22,6 +22,7 @@ export const createSassDevelopmentLoader = (COMMON_SASS_DIR: string) => [
         }, {
             loader: 'sass-loader',
             options: {
+                indentedSyntax: true,
                 outputStyle: 'expanded',
                 sourceMap: true,
             },
@@ -37,6 +38,7 @@ export const createSassDevelopmentLoader = (COMMON_SASS_DIR: string) => [
         }, {
             loader: 'sass-loader',
             options: {
+                indentedSyntax: true,
                 outputStyle: 'expanded',
                 sourceMap: true,
             },
