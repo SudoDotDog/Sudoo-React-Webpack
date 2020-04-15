@@ -11,6 +11,7 @@ export const createTypescriptLoader = (TSCONFIG_DIR: string) => ({
         loader: 'ts-loader',
         options: {
             configFile: TSCONFIG_DIR,
+            transpileOnly: false,
         },
     }],
 });
