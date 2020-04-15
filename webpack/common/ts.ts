@@ -8,9 +8,9 @@ export const createTypescriptLoader = (TSCONFIG_DIR: string) => ({
 
     test: /\.tsx?$/,
     use: [{
-        loader: 'awesome-typescript-loader',
+        loader: 'ts-loader',
         options: {
-            configFileName: TSCONFIG_DIR,
+            configFile: TSCONFIG_DIR,
         },
     }],
 });
