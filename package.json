@@ -1,6 +1,6 @@
 {
   "name": "@sudoo/webpack-react",
-  "version": "2.7.1",
+  "version": "2.7.3",
   "description": ":saxophone: Webpack common modules for react",
   "main": "dist/index.js",
   "scripts": {
@@ -42,7 +42,7 @@
     "webpack-dev-server": "3.11.0"
   },
   "devDependencies": {
-    "@sudoo/triforce": "^2.4.0",
+    "@sudoo/triforce": "^2.4.1",
     "@types/copy-webpack-plugin": "^5.0.1",
     "@types/html-webpack-plugin": "^3.2.3",
     "@types/node-sass": "^4.11.1",
