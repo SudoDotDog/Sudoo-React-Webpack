@@ -47,4 +47,4 @@ clean-linux:
 
 publish: install license build copy
 	@echo "[INFO] Publishing package"
-	# @cd app && npm publish --access=public
+	@cd app && npm publish --access=public
