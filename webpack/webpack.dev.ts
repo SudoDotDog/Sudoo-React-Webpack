@@ -6,7 +6,7 @@
 
 import * as Path from "path";
 import * as Webpack from "webpack";
-import { createCopyPlugin } from "./common/copy";
+import { createCopyPlugins } from "./common/copy";
 import { createDefinePlugin } from "./common/define";
 import { createDevlHtmlWebpackPlugin } from "./common/html-devl";
 import { createSassDevelopmentLoader } from "./common/sass.dev";
@@ -55,9 +55,9 @@ export const createDevConfig = (PATHS: SudooWebpackPath, setting: SudooWebpackSe
             }),
             new Webpack.HotModuleReplacementPlugin(),
             new Webpack.NamedModulesPlugin(),
-            createCopyPlugin(setting.copies),
             createDevlHtmlWebpackPlugin(internal.TEMPLATE_PATH, setting),
             createDefinePlugin('development', setting.defines),
+            ...createCopyPlugins(setting.copies),
             ...plugins,
         ],
         ...({

@@ -8,12 +8,18 @@ import * as CopyWebpackPlugin from "copy-webpack-plugin";
 import * as Webpack from "webpack";
 import { CopyPlugInElement } from "../declare";
 
-export const createCopyPlugin = (copies?: CopyPlugInElement[]): Webpack.Plugin => {
+export const createCopyPlugins = (copies?: CopyPlugInElement[]): Webpack.Plugin[] => {
 
-    return new CopyWebpackPlugin({
-        patterns: copies || [],
-        options: {
-            concurrency: 100,
-        },
-    });
+    if (copies && Array.isArray(copies) && copies.length > 0) {
+        return [
+            new CopyWebpackPlugin({
+                patterns: copies || [],
+                options: {
+                    concurrency: 100,
+                },
+            }),
+        ];
+    }
+
+    return []
 };
