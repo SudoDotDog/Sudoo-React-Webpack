@@ -28,11 +28,15 @@ install-prod:
 
 license: clean
 	@echo "[INFO] Sign files"
-	@NODE_ENV=development $(ts_node) script/license.ts
+	@NODE_ENV=production $(ts_node) script/license.ts
 
 clean: clean-linux
 	@echo "[INFO] Cleaning release files"
-	@NODE_ENV=development $(ts_node) script/clean-app.ts
+	@NODE_ENV=production $(ts_node) script/clean-app.ts
+
+copy:
+	@echo "[INFO] Copying deployment"
+	@NODE_ENV=production $(ts_node) script/copy.ts
 
 clean-linux:
 	@echo "[INFO] Cleaning dist files"
@@ -41,6 +45,6 @@ clean-linux:
 	@rm -rf .nyc_output
 	@rm -rf coverage
 
-publish: install license build
+publish: install license build copy
 	@echo "[INFO] Publishing package"
-	@cd app && npm publish --access=public
+	# @cd app && npm publish --access=public
