@@ -10,5 +10,7 @@ import { CopyPlugInElement } from "../declare";
 
 export const createCopyPlugin = (copies?: CopyPlugInElement[]): Webpack.Plugin => {
 
-    return new CopyWebpackPlugin(copies || []);
+    return new CopyWebpackPlugin({
+        patterns: copies || [],
+    });
 };
