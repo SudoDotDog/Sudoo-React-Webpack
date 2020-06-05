@@ -4,6 +4,7 @@
  * @description Production
  */
 
+import { LicenseWebpackPlugin } from "license-webpack-plugin";
 import * as MiniCssExtractPlugin from "mini-css-extract-plugin";
 import * as Path from "path";
 import * as Webpack from "webpack";
@@ -50,6 +51,13 @@ export const createBuildConfig = (PATHS: SudooWebpackPath, setting: SudooWebpack
             new MiniCssExtractPlugin({
                 filename: "[name].[contenthash].css",
                 chunkFilename: "[name].[id].[contenthash].css",
+            }),
+            new LicenseWebpackPlugin({
+                addBanner: true,
+                renderBanner: (filename: string) => {
+                    return `/*! SEE LICENSE AT ${filename} */`;
+                },
+                outputFilename: '[name].[id].LICENSE.txt',
             }),
             createHtmlWebpackPlugin(internal.TEMPLATE_PATH, setting),
             createDefinePlugin('production', setting.defines),
