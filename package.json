@@ -1,6 +1,6 @@
 {
   "name": "@sudoo/webpack-react",
-  "version": "2.7.3",
+  "version": "2.8.0",
   "description": ":saxophone: Webpack common modules for react",
   "main": "dist/index.js",
   "scripts": {

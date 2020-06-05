@@ -12,5 +12,8 @@ export const createCopyPlugin = (copies?: CopyPlugInElement[]): Webpack.Plugin =
 
     return new CopyWebpackPlugin({
         patterns: copies || [],
+        options: {
+            concurrency: 100,
+        },
     });
 };
