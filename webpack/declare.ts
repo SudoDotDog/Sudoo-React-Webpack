@@ -28,6 +28,16 @@ export type CopyPlugInElement = {
 export type SudooWebpackSetting = {
 
     readonly title: string;
+    readonly target?: 'web'
+    | 'webworker'
+    | 'node'
+    | 'async-node'
+    | 'node-webkit'
+    | 'atom'
+    | 'electron'
+    | 'electron-renderer'
+    | 'electron-preload'
+    | 'electron-main';
 
     readonly silent?: boolean;
     readonly analyze?: boolean;

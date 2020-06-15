@@ -19,8 +19,8 @@ export const createDevConfig = (PATHS: SudooWebpackPath, setting: SudooWebpackSe
     const plugins: Webpack.Plugin[] = setting.plugins || [];
 
     return {
+        target: setting.target ?? 'web',
         devtool: 'cheap-module-eval-source-map',
-        target: "web",
         mode: "development",
         entry: {
             index: [

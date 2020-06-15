@@ -23,7 +23,7 @@ export const createBuildConfig = (PATHS: SudooWebpackPath, setting: SudooWebpack
     const plugins: Webpack.Plugin[] = setting.plugins || [];
 
     return {
-        target: 'web',
+        target: setting.target ?? 'web',
         mode: 'production',
         optimization: createOptimization(),
         entry: {
