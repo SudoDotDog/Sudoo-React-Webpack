@@ -5,6 +5,7 @@ build := typescript/tsconfig.build.json
 tsc := node_modules/.bin/tsc
 ts_node := node_modules/.bin/ts-node
 mocha := node_modules/.bin/mocha
+eslint := node_modules/.bin/eslint
 
 .IGNORE: clean-linux
 
@@ -37,6 +38,18 @@ clean: clean-linux
 copy:
 	@echo "[INFO] Copying deployment"
 	@NODE_ENV=production $(ts_node) script/copy.ts
+
+lint:
+	@echo "[INFO] Linting"
+	@NODE_ENV=production \
+	$(eslint) . --ext .ts,.tsx \
+	--config ./typescript/.eslintrc.json
+
+lint-fix:
+	@echo "[INFO] Linting and Fixing"
+	@NODE_ENV=development \
+	$(eslint) . --ext .ts,.tsx \
+	--config ./typescript/.eslintrc.json --fix
 
 clean-linux:
 	@echo "[INFO] Cleaning dist files"

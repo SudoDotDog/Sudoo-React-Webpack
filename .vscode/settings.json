@@ -10,5 +10,7 @@
         "setx",
         "triforce"
     ],
-    "tslint.configFile": "typescript/tslint.json"
+    "eslint.options": {
+        "configFile": "./typescript/.eslintrc.json"
+    }
 }

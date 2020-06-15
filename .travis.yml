@@ -10,5 +10,8 @@ cache: npm
 install:
   - make install
 
+before_script:
+  - make lint
+
 script:
   - make build
