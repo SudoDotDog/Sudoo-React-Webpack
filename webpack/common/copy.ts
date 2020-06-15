@@ -5,10 +5,9 @@
  */
 
 import * as CopyWebpackPlugin from "copy-webpack-plugin";
-import * as Webpack from "webpack";
 import { CopyPlugInElement } from "../declare";
 
-export const createCopyPlugins = (copies?: CopyPlugInElement[]): Webpack.Plugin[] => {
+export const createCopyPlugins = (copies?: CopyPlugInElement[]): any => {
 
     if (copies && Array.isArray(copies) && copies.length > 0) {
         return [

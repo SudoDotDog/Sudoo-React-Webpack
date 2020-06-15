@@ -4,7 +4,9 @@
  * @description Typescript Loader
  */
 
-export const createTypescriptLoader = (TSCONFIG_DIR: string) => ({
+import * as Webpack from "webpack";
+
+export const createTypescriptLoader = (TSCONFIG_DIR: string): Webpack.RuleSetRule => ({
 
     test: /\.tsx?$/,
     use: [{
@@ -17,7 +19,9 @@ export const createTypescriptLoader = (TSCONFIG_DIR: string) => ({
 });
 
 
-export const getResolves = () => ({
+export const getResolves = (): {
+    readonly resolve: Webpack.Resolve;
+} => ({
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".json", ".css", ".sass"],
     },

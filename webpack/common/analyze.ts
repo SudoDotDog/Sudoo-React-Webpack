@@ -4,14 +4,15 @@
  * @description Analyze
  */
 
-import * as Webpack from "webpack";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import { SudooWebpackSetting } from "../declare";
 
-export const createAnalyzers = (setting: SudooWebpackSetting): Webpack.Plugin[] => {
+export const createAnalyzers = (setting: SudooWebpackSetting): any => {
 
     if (setting.analyze) {
-        return [new BundleAnalyzerPlugin()];
+        return [
+            new BundleAnalyzerPlugin(),
+        ];
     }
     return [];
 };

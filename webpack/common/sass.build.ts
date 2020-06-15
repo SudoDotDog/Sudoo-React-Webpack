@@ -5,8 +5,9 @@
  */
 
 import * as MiniCssExtractPlugin from "mini-css-extract-plugin";
+import * as Webpack from "webpack";
 
-export const createSassProductionLoader = (COMMON_SASS_DIR: string) => [
+export const createSassProductionLoader = (COMMON_SASS_DIR: string): Webpack.RuleSetRule[] => [
     {
         test: /\.s(a|c)ss$/,
         exclude: COMMON_SASS_DIR,

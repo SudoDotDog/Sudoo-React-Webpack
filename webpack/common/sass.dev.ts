@@ -4,7 +4,9 @@
  * @description Sass Loader Development
  */
 
-export const createSassDevelopmentLoader = (COMMON_SASS_DIR: string) => [
+import * as Webpack from "webpack";
+
+export const createSassDevelopmentLoader = (COMMON_SASS_DIR: string): Webpack.RuleSetRule[] => [
     {
         test: /\.s(a|c)ss$/,
         exclude: COMMON_SASS_DIR,

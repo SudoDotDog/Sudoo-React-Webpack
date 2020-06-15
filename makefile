@@ -61,3 +61,7 @@ clean-linux:
 publish: install license build copy
 	@echo "[INFO] Publishing package"
 	@cd app && npm publish --access=public
+
+publish-dry-run: install tests license build
+	@echo "[INFO] Publishing package (Dry Run)"
+	@cd app && npm publish --access=public --dry-run
