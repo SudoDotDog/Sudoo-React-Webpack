@@ -16,6 +16,9 @@
     "url": "https://github.com/SudoDotDog/Sudoo-React-Webpack/issues"
   },
   "homepage": "https://github.com/SudoDotDog/Sudoo-React-Webpack#readme",
+  "peerDependencies": {
+    "ts-loader": "*"
+  },
   "optionalDependencies": {
     "typescript": "*"
   },
@@ -31,7 +34,6 @@
     "sass-loader": "7.3.1",
     "source-map-loader": "1.0.0",
     "style-loader": "1.2.1",
-    "ts-loader": "7.0.5",
     "typings-for-css-modules-loader": "1.7.0",
     "webpack": "4.43.0",
     "webpack-bundle-analyzer": "3.8.0",
@@ -45,6 +47,7 @@
     "@types/html-webpack-plugin": "^3.2.3",
     "@types/node-sass": "^4.11.1",
     "@types/webpack": "^4.41.17",
-    "@types/webpack-bundle-analyzer": "^3.8.0"
+    "@types/webpack-bundle-analyzer": "^3.8.0",
+    "ts-loader": "7.0.5"
   }
 }
