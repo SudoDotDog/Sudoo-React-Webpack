@@ -17,6 +17,9 @@ import { SudooWebpackInternal, SudooWebpackPath, SudooWebpackSetting } from "./d
 export const createDevConfig = (PATHS: SudooWebpackPath, setting: SudooWebpackSetting, internal: SudooWebpackInternal, port: number): Webpack.Configuration => {
 
     const plugins: Webpack.Plugin[] = setting.plugins || [];
+    const devConfigPath: string = PATHS.TSCONFIG_PATH
+        ? PATHS.TSCONFIG_PATH
+        : Path.join(__dirname, 'config', 'tsconfig.dev.json');
 
     return {
         target: setting.target ?? 'web',
@@ -39,7 +42,7 @@ export const createDevConfig = (PATHS: SudooWebpackPath, setting: SudooWebpackSe
         ...getResolves(),
         module: {
             rules: [
-                createTypescriptLoader(PATHS.TSCONFIG_PATH),
+                createTypescriptLoader(devConfigPath),
                 ...createSassDevelopmentLoader(PATHS.COMMON_SASS_DIR),
                 {
                     enforce: "pre",
