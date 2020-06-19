@@ -12,9 +12,9 @@ export type SudooWebpackPath = {
     readonly BUILD_DIR: string;
     readonly COMMON_SASS_DIR: string;
 
-    readonly TSCONFIG_PATH: string;
-
     readonly APP_ENTRY_FILE_NAME: string;
+
+    readonly TSCONFIG_PATH?: string;
 };
 
 export type CopyPlugInElement = {

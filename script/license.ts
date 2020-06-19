@@ -26,6 +26,7 @@ const appPackage: any = {
     license: parent.license,
     bugs: parent.bugs,
     homepage: parent.homepage,
+    peerDependencies: parent.peerDependencies,
     optionalDependencies: parent.optionalDependencies,
     dependencies: parent.dependencies,
 };
