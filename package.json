@@ -23,6 +23,7 @@
     "typescript": "*"
   },
   "dependencies": {
+    "@teamsupercell/typings-for-css-modules-loader": "^2.2.0",
     "copy-webpack-plugin": "6.0.3",
     "css-loader": "3.6.0",
     "html-webpack-plugin": "4.3.0",
@@ -34,7 +35,6 @@
     "sass-loader": "9.0.1",
     "source-map-loader": "1.0.1",
     "style-loader": "1.2.1",
-    "typings-for-css-modules-loader": "1.7.0",
     "webpack": "4.43.0",
     "webpack-bundle-analyzer": "3.8.0",
     "webpack-cli": "3.3.12",
