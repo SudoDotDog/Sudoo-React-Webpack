@@ -1,6 +1,6 @@
 {
   "name": "@sudoo/webpack-react",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": ":saxophone: Webpack common modules for react",
   "repository": {
     "type": "git",
