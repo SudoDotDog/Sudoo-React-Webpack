@@ -49,11 +49,6 @@ export const createBuildConfig = (
             rules: [
                 createTypescriptLoader(buildConfigPath),
                 ...createSassProductionLoader(paths.commonSassPath),
-                {
-                    enforce: "pre",
-                    test: /\.js$/,
-                    loader: "source-map-loader",
-                },
             ],
         },
         plugins: [
