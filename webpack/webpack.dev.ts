@@ -13,16 +13,23 @@ import { createSassDevelopmentLoader } from "./common/sass.dev";
 import { getStatsSetting } from "./common/status";
 import { createTypescriptLoader, getResolves } from "./common/ts";
 import { SudooWebpackInternal, SudooWebpackPath, SudooWebpackSetting } from "./declare";
+import { getWebpackTarget } from "./util";
 
-export const createDevConfig = (PATHS: SudooWebpackPath, setting: SudooWebpackSetting, internal: SudooWebpackInternal, port: number): Webpack.Configuration => {
+export const createDevConfig = (
+    paths: SudooWebpackPath,
+    setting: SudooWebpackSetting,
+    internal: SudooWebpackInternal,
+    port: number,
+): Webpack.Configuration => {
 
     const plugins: Webpack.Plugin[] = setting.plugins || [];
-    const devConfigPath: string = PATHS.tsconfigPath
-        ? PATHS.tsconfigPath
+    const devConfigPath: string = paths.tsconfigPath
+        ? paths.tsconfigPath
         : Path.join(__dirname, 'config', 'tsconfig.dev.json');
 
     return {
-        target: setting.target ?? 'web',
+
+        target: getWebpackTarget(setting),
         devtool: 'cheap-module-eval-source-map',
         mode: "development",
         entry: {
@@ -30,12 +37,12 @@ export const createDevConfig = (PATHS: SudooWebpackPath, setting: SudooWebpackSe
                 'react-hot-loader/patch',
                 'webpack-dev-server/client',
                 'webpack/hot/only-dev-server',
-                Path.join(PATHS.applicationPath, PATHS.applicationEntryFile),
+                Path.join(paths.applicationPath, paths.applicationEntryFile),
             ],
         },
         output: {
             filename: "[name].bundle.js",
-            path: PATHS.buildPath,
+            path: paths.buildPath,
             publicPath: '/',
         },
         ...getStatsSetting(setting),
@@ -43,7 +50,7 @@ export const createDevConfig = (PATHS: SudooWebpackPath, setting: SudooWebpackSe
         module: {
             rules: [
                 createTypescriptLoader(devConfigPath),
-                ...createSassDevelopmentLoader(PATHS.commonSassPath),
+                ...createSassDevelopmentLoader(paths.commonSassPath),
                 {
                     enforce: "pre",
                     test: /\.js$/,
@@ -66,7 +73,7 @@ export const createDevConfig = (PATHS: SudooWebpackPath, setting: SudooWebpackSe
         ...({
             devServer: {
                 hot: true,
-                contentBase: PATHS.buildPath,
+                contentBase: paths.buildPath,
                 publicPath: '/',
                 port,
                 inline: true,
