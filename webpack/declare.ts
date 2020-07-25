@@ -8,13 +8,18 @@ import * as Webpack from "webpack";
 
 export type SudooWebpackPath = {
 
-    readonly APP_DIR: string;
-    readonly BUILD_DIR: string;
-    readonly COMMON_SASS_DIR: string;
+    readonly applicationPath: string;
+    readonly applicationEntryFile: string;
 
-    readonly APP_ENTRY_FILE_NAME: string;
+    readonly buildPath: string;
+    readonly commonSassPath: string;
 
-    readonly TSCONFIG_PATH?: string;
+    readonly tsconfigPath?: string;
+};
+
+export type SudooWebpackInternal = {
+
+    readonly templatePath: string;
 };
 
 export type CopyPlugInElement = {
@@ -51,9 +56,4 @@ export type SudooWebpackSetting = {
     readonly defines?: Record<string, string>;
     readonly copies?: CopyPlugInElement[];
     readonly plugins?: Webpack.Plugin[],
-};
-
-export type SudooWebpackInternal = {
-
-    readonly TEMPLATE_PATH: string;
 };
