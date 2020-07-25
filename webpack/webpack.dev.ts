@@ -17,8 +17,8 @@ import { SudooWebpackInternal, SudooWebpackPath, SudooWebpackSetting } from "./d
 export const createDevConfig = (PATHS: SudooWebpackPath, setting: SudooWebpackSetting, internal: SudooWebpackInternal, port: number): Webpack.Configuration => {
 
     const plugins: Webpack.Plugin[] = setting.plugins || [];
-    const devConfigPath: string = PATHS.TSCONFIG_PATH
-        ? PATHS.TSCONFIG_PATH
+    const devConfigPath: string = PATHS.tsconfigPath
+        ? PATHS.tsconfigPath
         : Path.join(__dirname, 'config', 'tsconfig.dev.json');
 
     return {
@@ -30,12 +30,12 @@ export const createDevConfig = (PATHS: SudooWebpackPath, setting: SudooWebpackSe
                 'react-hot-loader/patch',
                 'webpack-dev-server/client',
                 'webpack/hot/only-dev-server',
-                Path.join(PATHS.APP_DIR, PATHS.APP_ENTRY_FILE_NAME),
+                Path.join(PATHS.applicationPath, PATHS.applicationEntryFile),
             ],
         },
         output: {
             filename: "[name].bundle.js",
-            path: PATHS.BUILD_DIR,
+            path: PATHS.buildPath,
             publicPath: '/',
         },
         ...getStatsSetting(setting),
@@ -43,7 +43,7 @@ export const createDevConfig = (PATHS: SudooWebpackPath, setting: SudooWebpackSe
         module: {
             rules: [
                 createTypescriptLoader(devConfigPath),
-                ...createSassDevelopmentLoader(PATHS.COMMON_SASS_DIR),
+                ...createSassDevelopmentLoader(PATHS.commonSassPath),
                 {
                     enforce: "pre",
                     test: /\.js$/,
@@ -58,7 +58,7 @@ export const createDevConfig = (PATHS: SudooWebpackPath, setting: SudooWebpackSe
             }),
             new Webpack.HotModuleReplacementPlugin(),
             new Webpack.NamedModulesPlugin(),
-            createDevlHtmlWebpackPlugin(internal.TEMPLATE_PATH, setting),
+            createDevlHtmlWebpackPlugin(internal.templatePath, setting),
             createDefinePlugin('development', setting.defines),
             ...createCopyPlugins(setting.copies),
             ...plugins,
@@ -66,7 +66,7 @@ export const createDevConfig = (PATHS: SudooWebpackPath, setting: SudooWebpackSe
         ...({
             devServer: {
                 hot: true,
-                contentBase: PATHS.BUILD_DIR,
+                contentBase: PATHS.buildPath,
                 publicPath: '/',
                 port,
                 inline: true,

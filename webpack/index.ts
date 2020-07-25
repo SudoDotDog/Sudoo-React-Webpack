@@ -29,7 +29,7 @@ export class SudooWebpack {
 
         this._internal = {
 
-            TEMPLATE_PATH: setting.template || Path.join(__dirname, 'public', 'template.ejs'),
+            templatePath: setting.template ?? Path.join(__dirname, 'public', 'template.ejs'),
         };
     }
 

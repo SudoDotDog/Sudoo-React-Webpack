@@ -7,10 +7,10 @@
 import * as MiniCssExtractPlugin from "mini-css-extract-plugin";
 import * as Webpack from "webpack";
 
-export const createSassProductionLoader = (COMMON_SASS_DIR: string): Webpack.RuleSetRule[] => [
+export const createSassProductionLoader = (commonSassPath: string): Webpack.RuleSetRule[] => [
     {
         test: /\.s(a|c)ss$/,
-        exclude: COMMON_SASS_DIR,
+        exclude: commonSassPath,
         use: [{
             loader: MiniCssExtractPlugin.loader,
         }, {
@@ -36,7 +36,7 @@ export const createSassProductionLoader = (COMMON_SASS_DIR: string): Webpack.Rul
         }],
     }, {
         test: /\.s(a|c)ss$/,
-        include: COMMON_SASS_DIR,
+        include: commonSassPath,
         use: [{
             loader: 'style-loader',
         }, {

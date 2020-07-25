@@ -6,10 +6,10 @@
 
 import * as Webpack from "webpack";
 
-export const createSassDevelopmentLoader = (COMMON_SASS_DIR: string): Webpack.RuleSetRule[] => [
+export const createSassDevelopmentLoader = (commonSassPath: string): Webpack.RuleSetRule[] => [
     {
         test: /\.s(a|c)ss$/,
-        exclude: COMMON_SASS_DIR,
+        exclude: commonSassPath,
         use: [{
             loader: 'style-loader',
         }, {
@@ -36,7 +36,7 @@ export const createSassDevelopmentLoader = (COMMON_SASS_DIR: string): Webpack.Ru
     }, {
 
         test: /\.s(a|c)ss$/,
-        include: COMMON_SASS_DIR,
+        include: commonSassPath,
         use: [{
             loader: 'style-loader',
         }, {

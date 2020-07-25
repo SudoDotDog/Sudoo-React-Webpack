@@ -21,8 +21,8 @@ import { SudooWebpackInternal, SudooWebpackPath, SudooWebpackSetting } from "./d
 export const createBuildConfig = (PATHS: SudooWebpackPath, setting: SudooWebpackSetting, internal: SudooWebpackInternal): Webpack.Configuration => {
 
     const plugins: Webpack.Plugin[] = setting.plugins || [];
-    const buildConfigPath: string = PATHS.TSCONFIG_PATH
-        ? PATHS.TSCONFIG_PATH
+    const buildConfigPath: string = PATHS.tsconfigPath
+        ? PATHS.tsconfigPath
         : Path.join(__dirname, 'config', 'tsconfig.build.json');
 
     return {
@@ -30,11 +30,11 @@ export const createBuildConfig = (PATHS: SudooWebpackPath, setting: SudooWebpack
         mode: 'production',
         optimization: createOptimization(),
         entry: {
-            index: Path.join(PATHS.APP_DIR, PATHS.APP_ENTRY_FILE_NAME),
+            index: Path.join(PATHS.applicationPath, PATHS.applicationEntryFile),
         },
         output: {
             filename: '[name].[contenthash].bundle.js',
-            path: PATHS.BUILD_DIR,
+            path: PATHS.buildPath,
             publicPath: '/',
         },
         ...getStatsSetting(setting),
@@ -42,7 +42,7 @@ export const createBuildConfig = (PATHS: SudooWebpackPath, setting: SudooWebpack
         module: {
             rules: [
                 createTypescriptLoader(buildConfigPath),
-                ...createSassProductionLoader(PATHS.COMMON_SASS_DIR),
+                ...createSassProductionLoader(PATHS.commonSassPath),
                 {
                     enforce: "pre",
                     test: /\.js$/,
@@ -62,7 +62,7 @@ export const createBuildConfig = (PATHS: SudooWebpackPath, setting: SudooWebpack
                 },
                 outputFilename: '[name].[id].LICENSE.txt',
             }),
-            createHtmlWebpackPlugin(internal.TEMPLATE_PATH, setting),
+            createHtmlWebpackPlugin(internal.templatePath, setting),
             createDefinePlugin('production', setting.defines),
             ...createCopyPlugins(setting.copies),
             ...createAnalyzers(setting),
