@@ -22,7 +22,10 @@ export class SudooWebpack {
 
     private readonly _internal: SudooWebpackInternal;
 
-    private constructor(path: SudooWebpackPath, setting: SudooWebpackSetting) {
+    private constructor(
+        path: SudooWebpackPath,
+        setting: SudooWebpackSetting,
+    ) {
 
         this._path = path;
         this._setting = setting;

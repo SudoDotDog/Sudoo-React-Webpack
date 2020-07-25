@@ -33,7 +33,8 @@ export type CopyPlugInElement = {
 export type SudooWebpackSetting = {
 
     readonly title: string;
-    readonly target?: 'web'
+    readonly target?:
+    | 'web'
     | 'webworker'
     | 'node'
     | 'async-node'
