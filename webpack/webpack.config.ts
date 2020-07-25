@@ -17,24 +17,26 @@ import { createSassProductionLoader } from "./common/sass.build";
 import { getStatsSetting } from "./common/status";
 import { createTypescriptLoader, getResolves } from "./common/ts";
 import { SudooWebpackInternal, SudooWebpackPath, SudooWebpackSetting } from "./declare";
+import { getWebpackTarget } from "./util";
 
-export const createBuildConfig = (PATHS: SudooWebpackPath, setting: SudooWebpackSetting, internal: SudooWebpackInternal): Webpack.Configuration => {
+export const createBuildConfig = (paths: SudooWebpackPath, setting: SudooWebpackSetting, internal: SudooWebpackInternal): Webpack.Configuration => {
 
     const plugins: Webpack.Plugin[] = setting.plugins || [];
-    const buildConfigPath: string = PATHS.tsconfigPath
-        ? PATHS.tsconfigPath
+    const buildConfigPath: string = paths.tsconfigPath
+        ? paths.tsconfigPath
         : Path.join(__dirname, 'config', 'tsconfig.build.json');
 
     return {
-        target: setting.target ?? 'web',
+
+        target: getWebpackTarget(setting),
         mode: 'production',
         optimization: createOptimization(),
         entry: {
-            index: Path.join(PATHS.applicationPath, PATHS.applicationEntryFile),
+            index: Path.join(paths.applicationPath, paths.applicationEntryFile),
         },
         output: {
             filename: '[name].[contenthash].bundle.js',
-            path: PATHS.buildPath,
+            path: paths.buildPath,
             publicPath: '/',
         },
         ...getStatsSetting(setting),
@@ -42,7 +44,7 @@ export const createBuildConfig = (PATHS: SudooWebpackPath, setting: SudooWebpack
         module: {
             rules: [
                 createTypescriptLoader(buildConfigPath),
-                ...createSassProductionLoader(PATHS.commonSassPath),
+                ...createSassProductionLoader(paths.commonSassPath),
                 {
                     enforce: "pre",
                     test: /\.js$/,
