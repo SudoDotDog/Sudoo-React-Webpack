@@ -10,11 +10,11 @@ import { SudooWebpackInternal, SudooWebpackPath, SudooWebpackSetting } from "./d
 import { createBuildConfig } from "./webpack.config";
 import { createDevConfig } from "./webpack.dev";
 
-export class SudooWebpack {
+export class SudooWebpackReact {
 
-    public static create(path: SudooWebpackPath, setting: SudooWebpackSetting): SudooWebpack {
+    public static create(path: SudooWebpackPath, setting: SudooWebpackSetting): SudooWebpackReact {
 
-        return new SudooWebpack(path, setting);
+        return new SudooWebpackReact(path, setting);
     }
 
     private readonly _path: SudooWebpackPath;
