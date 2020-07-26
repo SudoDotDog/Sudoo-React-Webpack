@@ -44,15 +44,7 @@ export type WebpackTarget =
 
 export type AvailableWebpackTarget =
     | 'web'
-    | 'webworker'
-    | 'node'
-    | 'async-node'
-    | 'node-webkit'
-    | 'atom'
-    | 'electron'
-    | 'electron-renderer'
-    | 'electron-preload'
-    | 'electron-main';
+    | 'electron-renderer';
 
 export type SudooWebpackSetting = {
 
@@ -76,5 +68,18 @@ export type SudooWebpackSetting = {
 
 export const getWebpackTarget = (target?: AvailableWebpackTarget): WebpackTarget => {
 
-    return target;
+    if (!target) {
+        return 'web';
+    }
+
+    const available: AvailableWebpackTarget[] = [
+        'electron-renderer',
+        'web',
+    ];
+
+    if (available.includes(target)) {
+        return target;
+    }
+
+    return 'web';
 };
