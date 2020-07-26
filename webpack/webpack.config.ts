@@ -16,8 +16,7 @@ import { createOptimization } from "./common/optimization";
 import { createSassProductionLoader } from "./common/sass.build";
 import { getStatsSetting } from "./common/status";
 import { createTypescriptLoader, getResolves } from "./common/ts";
-import { SudooWebpackInternal, SudooWebpackPath, SudooWebpackSetting } from "./declare";
-import { getWebpackTarget } from "./util";
+import { getWebpackTarget, SudooWebpackInternal, SudooWebpackPath, SudooWebpackSetting } from "./declare";
 
 export const createBuildConfig = (
     paths: SudooWebpackPath,
@@ -32,7 +31,7 @@ export const createBuildConfig = (
 
     return {
 
-        target: getWebpackTarget(setting),
+        target: getWebpackTarget(setting.target),
         mode: 'production',
         optimization: createOptimization(),
         entry: {

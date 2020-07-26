@@ -73,3 +73,8 @@ export type SudooWebpackSetting = {
     readonly copies?: CopyPlugInElement[];
     readonly plugins?: Webpack.Plugin[],
 };
+
+export const getWebpackTarget = (target?: AvailableWebpackTarget): WebpackTarget => {
+
+    return target;
+};

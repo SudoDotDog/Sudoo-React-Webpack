@@ -12,8 +12,7 @@ import { createDevlHtmlWebpackPlugin } from "./common/html-devl";
 import { createSassDevelopmentLoader } from "./common/sass.dev";
 import { getStatsSetting } from "./common/status";
 import { createTypescriptLoader, getResolves } from "./common/ts";
-import { SudooWebpackInternal, SudooWebpackPath, SudooWebpackSetting } from "./declare";
-import { getWebpackTarget } from "./util";
+import { getWebpackTarget, SudooWebpackInternal, SudooWebpackPath, SudooWebpackSetting } from "./declare";
 
 export const createDevConfig = (
     paths: SudooWebpackPath,
@@ -29,7 +28,7 @@ export const createDevConfig = (
 
     return {
 
-        target: getWebpackTarget(setting),
+        target: getWebpackTarget(setting.target),
         devtool: 'cheap-module-eval-source-map',
         mode: "development",
         entry: {
