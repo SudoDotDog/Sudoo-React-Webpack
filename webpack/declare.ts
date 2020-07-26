@@ -30,10 +30,35 @@ export type CopyPlugInElement = {
     readonly cache?: boolean;
 };
 
+export type WebpackTarget =
+    | 'web'
+    | 'webworker'
+    | 'node'
+    | 'async-node'
+    | 'node-webkit'
+    | 'atom'
+    | 'electron'
+    | 'electron-renderer'
+    | 'electron-preload'
+    | 'electron-main';
+
+export type AvailableWebpackTarget =
+    | 'web'
+    | 'webworker'
+    | 'node'
+    | 'async-node'
+    | 'node-webkit'
+    | 'atom'
+    | 'electron'
+    | 'electron-renderer'
+    | 'electron-preload'
+    | 'electron-main';
+
 export type SudooWebpackSetting = {
 
     readonly title: string;
-    readonly electron?: boolean;
+
+    readonly target?: AvailableWebpackTarget;
 
     readonly silent?: boolean;
     readonly analyze?: boolean;
