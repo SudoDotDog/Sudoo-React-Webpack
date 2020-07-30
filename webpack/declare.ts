@@ -53,6 +53,7 @@ export type SudooWebpackSetting = {
     readonly target?: AvailableWebpackTarget;
 
     readonly silent?: boolean;
+    readonly warningsFilter?: string | RegExp | Array<string | RegExp> | ((warning: string) => boolean);
     readonly analyze?: boolean;
 
     readonly favicon?: string;

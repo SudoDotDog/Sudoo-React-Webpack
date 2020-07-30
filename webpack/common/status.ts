@@ -17,6 +17,15 @@ export const getStatsSetting = (setting: SudooWebpackSetting): {
                 all: false,
                 errors: true,
                 moduleTrace: true,
+                warningsFilter: setting.warningsFilter,
+            },
+        };
+    }
+
+    if (setting.warningsFilter) {
+        return {
+            stats: {
+                warningsFilter: setting.warningsFilter,
             },
         };
     }
