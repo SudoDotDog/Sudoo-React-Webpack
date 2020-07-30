@@ -5,7 +5,6 @@
  */
 
 import * as HtmlWebpackPlugin from "html-webpack-plugin";
-import * as Webpack from "webpack";
 import { SudooWebpackSetting } from "../declare";
 
 const getFaviconType = (setting: SudooWebpackSetting): string => {
@@ -37,11 +36,12 @@ export const parseSettingForHtmlPlugin = (setting: SudooWebpackSetting): Record<
     };
 };
 
-export const createDevlHtmlWebpackPlugin = (template: string, setting: SudooWebpackSetting): Webpack.Plugin => {
+export const createDevlHtmlWebpackPlugin = (template: string, setting: SudooWebpackSetting): any => {
 
     const parsed: Record<string, string> = parseSettingForHtmlPlugin(setting);
 
     return new HtmlWebpackPlugin({
+
         chunks: ['index'],
         template,
         filename: 'index.html',

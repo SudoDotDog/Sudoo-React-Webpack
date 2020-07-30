@@ -58,7 +58,9 @@ export const createDevConfig = (
             ],
         },
         plugins: [
-            new Webpack.WatchIgnorePlugin([/css\.d\.ts$/]),
+            new Webpack.WatchIgnorePlugin([
+                /(c|sa|sc)ss\.d\.ts$/,
+            ]),
             new Webpack.LoaderOptionsPlugin({
                 debug: true,
             }),
