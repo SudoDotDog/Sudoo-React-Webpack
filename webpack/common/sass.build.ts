@@ -24,6 +24,7 @@ export const createSassProductionLoader = (commonSassPath: string): Webpack.Rule
             loader: "css-loader",
             options: {
                 modules: true,
+                sourceMap: false,
             },
         }, {
             loader: 'sass-loader',

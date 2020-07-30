@@ -23,13 +23,14 @@ export const createSassDevelopmentLoader = (commonSassPath: string): Webpack.Rul
             loader: "css-loader",
             options: {
                 modules: true,
+                sourceMap: false,
             },
         }, {
             loader: 'sass-loader',
             options: {
                 sassOptions: {
                     outputStyle: 'expanded',
-                    sourceMap: true,
+                    sourceMap: false,
                 },
             },
         }],
@@ -46,7 +47,7 @@ export const createSassDevelopmentLoader = (commonSassPath: string): Webpack.Rul
             options: {
                 sassOptions: {
                     outputStyle: 'expanded',
-                    sourceMap: true,
+                    sourceMap: false,
                 },
             },
         }],
