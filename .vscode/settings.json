@@ -9,7 +9,8 @@
         "ifeq",
         "setx",
         "teamsupercell",
-        "triforce"
+        "triforce",
+        "webp"
     ],
     "eslint.options": {
         "configFile": "./typescript/.eslintrc.json"
