@@ -8,6 +8,7 @@ import * as Path from "path";
 import * as Webpack from "webpack";
 import { createCopyPlugins } from "./common/copy";
 import { createDefinePlugin } from "./common/define";
+import { createUrlLoaders } from "./common/file";
 import { createDevlHtmlWebpackPlugin } from "./common/html-devl";
 import { createSassDevelopmentLoader } from "./common/sass.dev";
 import { getStatsSetting } from "./common/status";
@@ -49,6 +50,7 @@ export const createDevConfig = (
         module: {
             rules: [
                 createTypescriptLoader(devConfigPath),
+                ...createUrlLoaders(),
                 ...createSassDevelopmentLoader(paths.commonSassPath),
                 {
                     enforce: "pre",

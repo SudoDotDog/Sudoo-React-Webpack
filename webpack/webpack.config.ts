@@ -11,6 +11,7 @@ import * as Webpack from "webpack";
 import { createAnalyzers } from "./common/analyze";
 import { createCopyPlugins } from "./common/copy";
 import { createDefinePlugin } from "./common/define";
+import { createUrlLoaders } from "./common/file";
 import { createHtmlWebpackPlugin } from "./common/html";
 import { createOptimization } from "./common/optimization";
 import { createSassProductionLoader } from "./common/sass.build";
@@ -47,6 +48,7 @@ export const createBuildConfig = (
         module: {
             rules: [
                 createTypescriptLoader(buildConfigPath),
+                ...createUrlLoaders(),
                 ...createSassProductionLoader(paths.commonSassPath),
             ],
         },
