@@ -64,7 +64,7 @@ export type SudooWebpackSetting = {
     readonly template?: string;
     readonly defines?: Record<string, string>;
     readonly copies?: CopyPlugInElement[];
-    readonly plugins?: Webpack.Plugin[],
+    readonly plugins?: Webpack.Plugin[];
 };
 
 export const getWebpackTarget = (target?: AvailableWebpackTarget): WebpackTarget => {
