@@ -23,7 +23,7 @@
     "typescript": "*"
   },
   "dependencies": {
-    "@teamsupercell/typings-for-css-modules-loader": "2.2.1",
+    "@teamsupercell/typings-for-css-modules-loader": "2.3.0",
     "copy-webpack-plugin": "6.0.3",
     "css-loader": "4.2.1",
     "file-loader": "^6.0.0",
@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@sudoo/io": "1.8.0",
-    "@sudoo/triforce": "2.7.13",
+    "@sudoo/triforce": "2.8.0",
     "@types/copy-webpack-plugin": "6.0.0",
     "@types/html-webpack-plugin": "3.2.3",
     "@types/mini-css-extract-plugin": "0.9.1",
