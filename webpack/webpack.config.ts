@@ -6,15 +6,14 @@
 
 import { LicenseWebpackPlugin } from "license-webpack-plugin";
 import * as MiniCssExtractPlugin from "mini-css-extract-plugin";
-import * as OptimizeCSSAssetsPlugin from "optimize-css-assets-webpack-plugin";
 import * as Path from "path";
-import * as TerserPlugin from "terser-webpack-plugin";
 import * as Webpack from "webpack";
 import { createAnalyzers } from "./common/analyze";
 import { createCopyPlugins } from "./common/copy";
 import { createDefinePlugin } from "./common/define";
 import { createUrlLoaders } from "./common/file";
 import { createHtmlWebpackPlugin } from "./common/html";
+import { createOptimization } from "./common/optimization";
 import { createSassProductionLoader } from "./common/sass.build";
 import { getStatsSetting } from "./common/status";
 import { createTypescriptLoader, getResolves } from "./common/ts";
@@ -26,7 +25,7 @@ export const createBuildConfig = (
     internal: SudooWebpackInternal,
 ): Webpack.Configuration => {
 
-    const plugins: Webpack.WebpackPluginInstance[] = setting.plugins || [];
+    const plugins: Webpack.Plugin[] = setting.plugins || [];
     const buildConfigPath: string = paths.tsconfigPath
         ? paths.tsconfigPath
         : Path.join(__dirname, 'config', 'tsconfig.build.json');
@@ -35,47 +34,7 @@ export const createBuildConfig = (
 
         target: getWebpackTarget(setting.target),
         mode: 'production',
-        optimization: {
-            chunkIds: 'named',
-            moduleIds: 'hashed',
-            runtimeChunk: 'single',
-            minimizer: [
-                new TerserPlugin({
-                    cache: true,
-                    parallel: true,
-                }),
-                new OptimizeCSSAssetsPlugin({}),
-            ],
-            splitChunks: {
-                chunks: 'all',
-                cacheGroups: {
-                    core: {
-                        test: /[\\/]src[\\/]/,
-                        maxInitialRequests: 2,
-                        priority: 10,
-                        name: 'core',
-                        enforce: true,
-                        reuseExistingChunk: true,
-                    },
-                    vendor: {
-                        test: /[\\/]node_modules[\\/]/,
-                        maxInitialRequests: 9,
-                        name: (module: any) => {
-                            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
-                            return `vendor.${packageName.replace('@', '')}`;
-                        },
-                        reuseExistingChunk: true,
-                    },
-                    style: {
-                        test: /\.css$/,
-                        priority: 10,
-                        maxInitialRequests: 2,
-                        name: 'style',
-                        enforce: true,
-                    },
-                },
-            },
-        },
+        optimization: createOptimization(),
         entry: {
             index: Path.join(paths.applicationPath, paths.applicationEntryFile),
         },

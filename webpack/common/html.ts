@@ -37,7 +37,7 @@ export const parseSettingForHtmlPlugin = (setting: SudooWebpackSetting): Record<
     };
 };
 
-export const createHtmlWebpackPlugin = (template: string, setting: SudooWebpackSetting): Webpack.WebpackPluginInstance => {
+export const createHtmlWebpackPlugin = (template: string, setting: SudooWebpackSetting): Webpack.Plugin => {
 
     const parsed: Record<string, string> = parseSettingForHtmlPlugin(setting);
 
