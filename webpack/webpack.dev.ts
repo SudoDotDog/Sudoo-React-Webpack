@@ -22,7 +22,7 @@ export const createDevConfig = (
     port: number,
 ): Webpack.Configuration => {
 
-    const plugins: Webpack.Plugin[] = setting.plugins || [];
+    const plugins: Webpack.WebpackPluginInstance[] = setting.plugins || [];
     const devConfigPath: string = paths.tsconfigPath
         ? paths.tsconfigPath
         : Path.join(__dirname, 'config', 'tsconfig.dev.json');
@@ -30,8 +30,11 @@ export const createDevConfig = (
     return {
 
         target: getWebpackTarget(setting.target),
-        devtool: 'cheap-module-eval-source-map',
+        devtool: 'eval-cheap-module-source-map',
         mode: "development",
+        optimization: {
+            moduleIds: 'named',
+        },
         entry: {
             index: [
                 'react-hot-loader/patch',
@@ -60,14 +63,15 @@ export const createDevConfig = (
             ],
         },
         plugins: [
-            new Webpack.WatchIgnorePlugin([
-                /(c|sa|sc)ss\.d\.ts$/,
-            ]),
+            new Webpack.WatchIgnorePlugin({
+                paths: [
+                    /(c|sa|sc)ss\.d\.ts$/,
+                ],
+            }),
             new Webpack.LoaderOptionsPlugin({
                 debug: true,
             }),
             new Webpack.HotModuleReplacementPlugin(),
-            new Webpack.NamedModulesPlugin(),
             createDevlHtmlWebpackPlugin(internal.templatePath, setting),
             createDefinePlugin('development', setting.defines),
             ...createCopyPlugins(setting.copies),
