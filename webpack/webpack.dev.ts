@@ -43,7 +43,7 @@ export const createDevConfig = (
         output: {
             filename: "[name].bundle.js",
             path: paths.buildPath,
-            publicPath: '/',
+            publicPath: paths.developmentPublicPath ? paths.developmentPublicPath : '/',
         },
         ...getStatsSetting(setting),
         ...getResolves(),

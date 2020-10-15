@@ -41,7 +41,7 @@ export const createBuildConfig = (
         output: {
             filename: '[name].[contenthash].bundle.js',
             path: paths.buildPath,
-            publicPath: '/',
+            publicPath: paths.productionPublicPath ? paths.productionPublicPath : '/',
         },
         ...getStatsSetting(setting),
         ...getResolves(),

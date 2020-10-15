@@ -14,6 +14,8 @@ export type SudooWebpackPath = {
     readonly buildPath: string;
     readonly commonSassPath: string;
 
+    readonly developmentPublicPath?: string;
+    readonly productionPublicPath?: string;
     readonly tsconfigPath?: string;
 };
 
