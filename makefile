@@ -20,11 +20,11 @@ build:
 	@NODE_ENV=production $(tsc) --p $(build)
 
 install:
-	@echo "[INFO] Installing dev Dependencies"
+	@echo "[INFO] Installing Development Dependencies"
 	@yarn install --production=false
 
 install-prod:
-	@echo "[INFO] Installing Dependencies"
+	@echo "[INFO] Installing Production Dependencies"
 	@yarn install --production=true
 
 outdated:
