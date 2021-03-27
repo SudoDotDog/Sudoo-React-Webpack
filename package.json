@@ -46,12 +46,12 @@
   "devDependencies": {
     "@sudoo/io": "1.8.0",
     "@sudoo/triforce": "2.9.20",
-    "@types/copy-webpack-plugin": "6.4.0",
+    "@types/copy-webpack-plugin": "6.4.1",
     "@types/html-webpack-plugin": "3.2.5",
-    "@types/mini-css-extract-plugin": "1.2.2",
+    "@types/mini-css-extract-plugin": "1.2.3",
     "@types/node-sass": "4.11.1",
-    "@types/webpack": "4.41.26",
-    "@types/webpack-bundle-analyzer": "3.9.1",
+    "@types/webpack": "5.0.0",
+    "@types/webpack-bundle-analyzer": "3.9.2",
     "ts-loader": "8.0.18"
   }
 }
