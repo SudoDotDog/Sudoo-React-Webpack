@@ -52,6 +52,6 @@
     "@types/node-sass": "4.11.1",
     "@types/webpack": "5.28.0",
     "@types/webpack-bundle-analyzer": "3.9.2",
-    "ts-loader": "8.0.18"
+    "ts-loader": "8.1.0"
   }
 }
