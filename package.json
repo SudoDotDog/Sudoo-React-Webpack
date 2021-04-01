@@ -23,12 +23,12 @@
     "typescript": "*"
   },
   "dependencies": {
-    "@teamsupercell/typings-for-css-modules-loader": "2.4.0",
+    "@teamsupercell/typings-for-css-modules-loader": "2.5.1",
     "copy-webpack-plugin": "6.4.1",
     "css-loader": "5.2.0",
     "file-loader": "6.2.0",
     "html-webpack-plugin": "4.5.2",
-    "license-webpack-plugin": "2.3.15",
+    "license-webpack-plugin": "2.3.16",
     "mini-css-extract-plugin": "1.4.0",
     "mini-svg-data-uri": "1.2.3",
     "node-sass": "5.0.0",
@@ -40,7 +40,7 @@
     "url-loader": "4.1.1",
     "webpack": "4.46.0",
     "webpack-bundle-analyzer": "4.4.0",
-    "webpack-cli": "4.5.0",
+    "webpack-cli": "4.6.0",
     "webpack-dev-server": "3.11.2"
   },
   "devDependencies": {
@@ -48,10 +48,10 @@
     "@sudoo/triforce": "2.9.21",
     "@types/copy-webpack-plugin": "6.4.1",
     "@types/html-webpack-plugin": "3.2.5",
-    "@types/mini-css-extract-plugin": "1.2.3",
+    "@types/mini-css-extract-plugin": "1.4.0",
     "@types/node-sass": "4.11.1",
     "@types/webpack": "5.28.0",
     "@types/webpack-bundle-analyzer": "3.9.2",
-    "ts-loader": "8.0.18"
+    "ts-loader": "8.1.0"
   }
 }
