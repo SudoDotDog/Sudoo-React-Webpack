@@ -51,7 +51,7 @@
     "@types/mini-css-extract-plugin": "1.4.1",
     "@types/node-sass": "4.11.1",
     "@types/webpack": "5.28.0",
-    "@types/webpack-bundle-analyzer": "3.9.2",
+    "@types/webpack-bundle-analyzer": "4.4.0",
     "ts-loader": "8.1.0"
   }
 }
