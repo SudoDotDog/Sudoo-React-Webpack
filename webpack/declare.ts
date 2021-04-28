@@ -4,16 +4,14 @@
  * @description Declare
  */
 
-import * as Webpack from "webpack";
-
 export type SudooWebpackPath = {
 
     readonly applicationPath: string;
     readonly applicationEntryFile: string;
 
     readonly buildPath: string;
-    readonly commonSassPath: string;
 
+    readonly commonSassPath?: string;
     readonly developmentPublicPath?: string;
     readonly productionPublicPath?: string;
     readonly tsconfigPath?: string;
@@ -66,7 +64,7 @@ export type SudooWebpackSetting = {
     readonly template?: string;
     readonly defines?: Record<string, string>;
     readonly copies?: CopyPlugInElement[];
-    readonly plugins?: Webpack.Plugin[];
+    readonly plugins?: any[];
 };
 
 export const getWebpackTarget = (target?: AvailableWebpackTarget): WebpackTarget => {

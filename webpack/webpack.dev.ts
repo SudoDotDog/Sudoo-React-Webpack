@@ -22,7 +22,7 @@ export const createDevConfig = (
     port: number,
 ): Webpack.Configuration => {
 
-    const plugins: Webpack.Plugin[] = setting.plugins || [];
+    const plugins: any[] = setting.plugins || [];
     const devConfigPath: string = paths.tsconfigPath
         ? paths.tsconfigPath
         : Path.join(__dirname, 'config', 'tsconfig.dev.json');
@@ -60,14 +60,16 @@ export const createDevConfig = (
             ],
         },
         plugins: [
-            new Webpack.WatchIgnorePlugin([
-                /(c|sa|sc)ss\.d\.ts$/,
-            ]),
+            new Webpack.WatchIgnorePlugin({
+                paths: [
+                    /(c|sa|sc)ss\.d\.ts$/,
+                ],
+            }),
             new Webpack.LoaderOptionsPlugin({
                 debug: true,
             }),
+            new Webpack.CleanPlugin(),
             new Webpack.HotModuleReplacementPlugin(),
-            new Webpack.NamedModulesPlugin(),
             createDevlHtmlWebpackPlugin(internal.templatePath, setting),
             createDefinePlugin('development', setting.defines),
             ...createCopyPlugins(setting.copies),

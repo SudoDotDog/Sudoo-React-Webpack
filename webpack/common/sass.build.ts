@@ -7,8 +7,9 @@
 import * as MiniCssExtractPlugin from "mini-css-extract-plugin";
 import * as Webpack from "webpack";
 
-export const createSassProductionLoader = (commonSassPath: string): Webpack.RuleSetRule[] => [
-    {
+export const createSassProductionLoader = (commonSassPath?: string): Webpack.RuleSetRule[] => {
+
+    const rules: Webpack.RuleSetRule[] = [{
         test: /\.s(a|c)ss$/,
         exclude: commonSassPath,
         use: [{
@@ -35,28 +36,37 @@ export const createSassProductionLoader = (commonSassPath: string): Webpack.Rule
                 },
             },
         }],
-    }, {
-        test: /\.s(a|c)ss$/,
-        include: commonSassPath,
-        use: [{
-            loader: 'style-loader',
-        }, {
-            loader: 'css-loader',
-        }, {
-            loader: 'sass-loader',
-            options: {
-                sassOptions: {
-                    outputStyle: 'expanded',
-                    sourceMap: false,
+    }];
+
+    if (typeof commonSassPath === 'string') {
+
+        rules.push({
+            test: /\.s(a|c)ss$/,
+            include: commonSassPath,
+            use: [{
+                loader: 'style-loader',
+            }, {
+                loader: 'css-loader',
+            }, {
+                loader: 'sass-loader',
+                options: {
+                    sassOptions: {
+                        outputStyle: 'expanded',
+                        sourceMap: false,
+                    },
                 },
-            },
-        }],
-    }, {
+            }],
+        });
+    }
+
+    rules.push({
         test: /\.css$/,
         use: [{
             loader: 'style-loader',
         }, {
             loader: 'css-loader',
         }],
-    },
-];
+    });
+
+    return rules;
+};
