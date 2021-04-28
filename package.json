@@ -1,6 +1,6 @@
 {
   "name": "@sudoo/webpack-react",
-  "version": "4.4.3",
+  "version": "4.5.0",
   "description": ":saxophone: Webpack common modules for react",
   "repository": {
     "type": "git",
@@ -50,7 +50,7 @@
     "@types/html-webpack-plugin": "3.2.5",
     "@types/mini-css-extract-plugin": "1.4.2",
     "@types/node-sass": "4.11.1",
-    "@types/webpack": "5.28.0",
+    "@types/webpack": "4.41.27",
     "@types/webpack-bundle-analyzer": "4.4.0",
     "ts-loader": "9.1.1"
   }

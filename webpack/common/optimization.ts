@@ -6,8 +6,9 @@
 
 import * as OptimizeCSSAssetsPlugin from "optimize-css-assets-webpack-plugin";
 import * as TerserPlugin from "terser-webpack-plugin";
+import * as Webpack from "webpack";
 
-export const createOptimization = (): any => ({
+export const createOptimization = (): Webpack.Options.Optimization => ({
 
     runtimeChunk: 'single',
     minimizer: [
@@ -31,7 +32,7 @@ export const createOptimization = (): any => ({
             vendor: {
                 test: /[\\/]node_modules[\\/]/,
                 maxInitialRequests: 9,
-                name: (module: any) => {
+                name: (module) => {
                     const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
                     return `vendor.${packageName.replace('@', '')}`;
                 },
