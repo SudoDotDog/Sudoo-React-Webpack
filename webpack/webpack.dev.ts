@@ -11,6 +11,7 @@ import { createDefinePlugin } from "./common/define";
 import { createUrlLoaders } from "./common/file";
 import { createDevlHtmlWebpackPlugin } from "./common/html-devl";
 import { createSassDevelopmentLoader } from "./common/sass.dev";
+import { createSourceMapLoader } from "./common/source-map";
 import { getStatsSetting } from "./common/status";
 import { createTypescriptLoader, getResolves } from "./common/ts";
 import { getWebpackTarget, SudooWebpackInternal, SudooWebpackPath, SudooWebpackSetting } from "./declare";
@@ -52,11 +53,7 @@ export const createDevConfig = (
                 createTypescriptLoader(devConfigPath),
                 ...createUrlLoaders(),
                 ...createSassDevelopmentLoader(paths.commonSassPath),
-                {
-                    enforce: "pre",
-                    test: /\.js$/,
-                    loader: "source-map-loader",
-                },
+                ...createSourceMapLoader(setting.skipNodeModulesSourceMapping),
             ],
         },
         plugins: [

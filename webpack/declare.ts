@@ -60,6 +60,7 @@ export type SudooWebpackSetting = {
     readonly faviconType?: string;
     readonly mobile?: boolean;
     readonly insertion?: string;
+    readonly skipNodeModulesSourceMapping?: boolean;
 
     readonly template?: string;
     readonly defines?: Record<string, string>;
