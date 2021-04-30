@@ -7,15 +7,15 @@ updates:
     open-pull-requests-limit: 10
     versioning-strategy: increase
     ignore:
-      - dependency-name: css-loader
-        versions:
-          - ">= 2.a, < 3"
-      - dependency-name: css-loader
-        versions:
-          - ">= 3.a, < 4"
       - dependency-name: sass-loader
         versions:
           - ">= 8.a, < 9"
+      - dependency-name: ts-loader
+        versions:
+          - ">= 9.a, < 10"
+      - dependency-name: "webpack"
+        versions:
+          - ">= 5.a, < 6"
       - dependency-name: "@types/webpack"
         versions:
-          - ">= 5.a, < 10"
+          - ">= 5.a, < 6"
