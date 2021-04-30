@@ -16,7 +16,8 @@ export const createSourceMapLoader = (skipNodeModulesSourceMapping?: boolean): W
                 loader: "source-map-loader",
                 options: {
                     filterSourceMappingUrl: (_url: string, resourcePath: string): boolean => {
-                        if (/.*\/node_modules\/.*/.test(resourcePath)) {
+
+                        if (resourcePath.includes('node_modules')) {
                             return false;
                         }
                         return true;
