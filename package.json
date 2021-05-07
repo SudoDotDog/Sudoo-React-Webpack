@@ -48,7 +48,7 @@
     "@sudoo/triforce": "2.9.24",
     "@types/copy-webpack-plugin": "8.0.0",
     "@types/html-webpack-plugin": "3.2.5",
-    "@types/mini-css-extract-plugin": "1.4.2",
+    "@types/mini-css-extract-plugin": "1.4.3",
     "@types/node-sass": "4.11.1",
     "@types/webpack": "4.41.27",
     "@types/webpack-bundle-analyzer": "4.4.0",
