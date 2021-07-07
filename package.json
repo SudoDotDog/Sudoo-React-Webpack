@@ -46,7 +46,7 @@
   "devDependencies": {
     "@sudoo/io": "1.8.0",
     "@sudoo/triforce": "2.9.27",
-    "@types/copy-webpack-plugin": "8.0.0",
+    "@types/copy-webpack-plugin": "8.0.1",
     "@types/html-webpack-plugin": "3.2.6",
     "@types/mini-css-extract-plugin": "2.0.0",
     "@types/node-sass": "4.11.1",
