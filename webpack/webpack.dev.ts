@@ -73,10 +73,7 @@ export const createDevConfig = (
         ...({
             devServer: {
                 hot: true,
-                contentBase: paths.buildPath,
-                publicPath: '/',
                 port,
-                inline: true,
                 historyApiFallback: true,
             },
         } as any),
