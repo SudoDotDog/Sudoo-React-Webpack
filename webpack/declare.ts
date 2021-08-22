@@ -26,6 +26,7 @@ export type CopyPlugInElement = {
 
     readonly from: string;
     readonly to: string;
+    readonly context?: string;
     readonly test?: RegExp;
     readonly cache?: boolean;
 };
