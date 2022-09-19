@@ -41,7 +41,7 @@
     "webpack": "4.46.0",
     "webpack-bundle-analyzer": "4.6.1",
     "webpack-cli": "4.10.0",
-    "webpack-dev-server": "4.11.0"
+    "webpack-dev-server": "4.11.1"
   },
   "devDependencies": {
     "@sudoo/io": "1.8.0",
