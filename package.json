@@ -31,7 +31,7 @@
     "license-webpack-plugin": "4.0.2",
     "mini-css-extract-plugin": "1.6.2",
     "mini-svg-data-uri": "1.4.4",
-    "node-sass": "8.0.0",
+    "node-sass": "9.0.0",
     "optimize-css-assets-webpack-plugin": "6.0.1",
     "react-hot-loader": "4.13.1",
     "sass-loader": "16.0.0",
